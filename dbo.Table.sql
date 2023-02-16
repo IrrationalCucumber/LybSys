@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ACCOUNTS]
+(
+	[Id] INT IDENTITY(1,1) PRIMARY KEY, 
+    [username] NVARCHAR(50) NULL, 
+    [password] NVARCHAR(50) NULL
+)
