@@ -135,6 +135,7 @@ namespace LybSys
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSumbit);
             this.Name = "SignUp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sign Up";
             this.Load += new System.EventHandler(this.SignUp_Load);
             this.ResumeLayout(false);

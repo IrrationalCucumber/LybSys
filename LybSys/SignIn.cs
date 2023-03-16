@@ -16,12 +16,13 @@ namespace LybSys
         SqlCommand cmd;
         SqlConnection cn;
         SqlDataReader dr;
+        //string userName;
         public SignIn()
         {
             InitializeComponent();
         }
         private void SignIn_Load(object sender, EventArgs e)
-         {
+        {
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
         }
@@ -31,7 +32,7 @@ namespace LybSys
             SignUp registration = new SignUp();
             registration.ShowDialog();
         }
-
+        //public static void userName() { } // for diplaying username
         private void btnSumbit_Click(object sender, EventArgs e)
         {
             if (tbPassword.Text != string.Empty || tbUsername.Text != string.Empty)
@@ -58,8 +59,9 @@ namespace LybSys
                         {
                             MessageBox.Show("Login Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Hide();
-                            Home home = new Home();
-                            home.ShowDialog();
+                            //userName() = tbUsername.Text;
+                            Menu menu = new Menu();
+                            menu.ShowDialog();
                         }
                  }
                 else
