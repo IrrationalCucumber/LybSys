@@ -24,8 +24,19 @@ namespace LybSys
 
         private void booksToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Book books = new Book();
+            Books books = new Books();
             books.Show();
+        }
+
+        private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports report = new Reports();
+            report.Show();
+        }
+
+        private void returnedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -38,6 +38,8 @@ namespace LybSys
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
+            this.returnedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.returnedToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +79,9 @@ namespace LybSys
             // 
             // booksToolStripMenuItem
             // 
+            this.booksToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.returnedToolStripMenuItem,
+            this.returnedToolStripMenuItem1});
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
             this.booksToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.booksToolStripMenuItem.Text = "Transaction";
@@ -86,6 +91,7 @@ namespace LybSys
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
             this.transactionToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.transactionToolStripMenuItem.Text = "Reports";
+            this.transactionToolStripMenuItem.Click += new System.EventHandler(this.transactionToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -114,6 +120,19 @@ namespace LybSys
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(0, 13);
             this.lblUser.TabIndex = 3;
+            // 
+            // returnedToolStripMenuItem
+            // 
+            this.returnedToolStripMenuItem.Name = "returnedToolStripMenuItem";
+            this.returnedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.returnedToolStripMenuItem.Text = "Borrowed";
+            this.returnedToolStripMenuItem.Click += new System.EventHandler(this.returnedToolStripMenuItem_Click);
+            // 
+            // returnedToolStripMenuItem1
+            // 
+            this.returnedToolStripMenuItem1.Name = "returnedToolStripMenuItem1";
+            this.returnedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.returnedToolStripMenuItem1.Text = "Returned";
             // 
             // Menu
             // 
@@ -147,5 +166,7 @@ namespace LybSys
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.ToolStripMenuItem returnedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem returnedToolStripMenuItem1;
     }
 }

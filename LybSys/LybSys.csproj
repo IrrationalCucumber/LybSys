@@ -61,11 +61,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs">
+    <Compile Include="Books.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Book.Designer.cs">
-      <DependentUpon>Book.cs</DependentUpon>
+    <Compile Include="Books.Designer.cs">
+      <DependentUpon>Books.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowed.Designer.cs">
+      <DependentUpon>Borrowed.cs</DependentUpon>
     </Compile>
     <Compile Include="Cryptomining.cs" />
     <Compile Include="Home.cs">
@@ -79,6 +85,18 @@
     </Compile>
     <Compile Include="Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returned.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returned.Designer.cs">
+      <DependentUpon>Returned.cs</DependentUpon>
     </Compile>
     <Compile Include="SignIn.cs">
       <SubType>Form</SubType>
@@ -94,9 +112,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Book.resx">
-      <DependentUpon>Book.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
