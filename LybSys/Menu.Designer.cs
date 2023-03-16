@@ -133,6 +133,7 @@ namespace LybSys
             this.returnedToolStripMenuItem1.Name = "returnedToolStripMenuItem1";
             this.returnedToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.returnedToolStripMenuItem1.Text = "Returned";
+            this.returnedToolStripMenuItem1.Click += new System.EventHandler(this.returnedToolStripMenuItem1_Click);
             // 
             // Menu
             // 

@@ -36,7 +36,14 @@ namespace LybSys
 
         private void returnedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Borrowed borrow = new Borrowed();
+            borrow.Show();
+        }
+
+        private void returnedToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Returned returned = new Returned();
+            returned.Show();
         }
     }
 }
