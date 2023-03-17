@@ -1,7 +1,7 @@
 ﻿
 namespace LybSys
 {
-    partial class Returned
+    partial class Return
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
 namespace LybSys
 {
-    partial class Borrowed
+    partial class Borrow
     {
         /// <summary>
         /// Required designer variable.

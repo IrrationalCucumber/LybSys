@@ -26,24 +26,28 @@ namespace LybSys
         {
             Books books = new Books();
             books.Show();
+            this.Hide();
         }
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Reports report = new Reports();
             report.Show();
+            this.Hide();
         }
 
         private void returnedToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Borrowed borrow = new Borrowed();
+            Borrow borrow = new Borrow();
             borrow.Show();
+            this.Hide();
         }
 
         private void returnedToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Returned returned = new Returned();
+            Return returned = new Return();
             returned.Show();
+            this.Hide();
         }
     }
 }

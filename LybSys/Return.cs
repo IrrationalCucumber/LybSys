@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LybSys
 {
-    public partial class Borrowed : Form
+    public partial class Return : Form
     {
-        public Borrowed()
+        public Return()
         {
             InitializeComponent();
         }

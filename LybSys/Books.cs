@@ -28,6 +28,8 @@ namespace LybSys
 
         private void Books_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'database1DataSet.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter.Fill(this.database1DataSet.BOOKS);
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
         }
@@ -71,5 +73,45 @@ namespace LybSys
             }
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void filesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Borrower 
+        }
+
+        private void borrowedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Borrow borrowed = new Borrow();
+            borrowed.Show();
+            this.Hide();
+        }
+
+        private void returnedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Return rtn = new Return();
+            rtn.Show();
+            this.Hide();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btMenu_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Hide();
+        }
     }
 }

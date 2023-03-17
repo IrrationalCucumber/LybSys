@@ -67,13 +67,29 @@
     <Compile Include="Books.Designer.cs">
       <DependentUpon>Books.cs</DependentUpon>
     </Compile>
-    <Compile Include="Borrowed.cs">
+    <Compile Include="Borrow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Borrowed.Designer.cs">
-      <DependentUpon>Borrowed.cs</DependentUpon>
+    <Compile Include="Borrow.Designer.cs">
+      <DependentUpon>Borrow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrower.Designer.cs">
+      <DependentUpon>Borrower.cs</DependentUpon>
     </Compile>
     <Compile Include="Cryptomining.cs" />
+    <Compile Include="Database1Accounts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1Accounts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Database1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,11 +108,11 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Returned.cs">
+    <Compile Include="Return.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Returned.Designer.cs">
-      <DependentUpon>Returned.cs</DependentUpon>
+    <Compile Include="Return.Designer.cs">
+      <DependentUpon>Return.cs</DependentUpon>
     </Compile>
     <Compile Include="SignIn.cs">
       <SubType>Form</SubType>
@@ -114,6 +130,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrower.resx">
+      <DependentUpon>Borrower.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -136,6 +155,28 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Database1Accounts.xsc">
+      <DependentUpon>Database1Accounts.xsd</DependentUpon>
+    </None>
+    <None Include="Database1Accounts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1Accounts.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1Accounts.xss">
+      <DependentUpon>Database1Accounts.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet.xsc">
+      <DependentUpon>Database1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Database1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database1DataSet.xss">
+      <DependentUpon>Database1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
