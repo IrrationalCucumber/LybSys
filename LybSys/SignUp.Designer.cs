@@ -38,11 +38,13 @@ namespace LybSys
             this.tbPassword2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lnkSI = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSumbit
             // 
-            this.btnSumbit.Location = new System.Drawing.Point(144, 273);
+            this.btnSumbit.Location = new System.Drawing.Point(149, 305);
             this.btnSumbit.Name = "btnSumbit";
             this.btnSumbit.Size = new System.Drawing.Size(75, 23);
             this.btnSumbit.TabIndex = 0;
@@ -53,7 +55,7 @@ namespace LybSys
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 53);
+            this.label1.Location = new System.Drawing.Point(52, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 1;
@@ -62,7 +64,7 @@ namespace LybSys
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 118);
+            this.label2.Location = new System.Drawing.Point(52, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 2;
@@ -71,7 +73,7 @@ namespace LybSys
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 180);
+            this.label3.Location = new System.Drawing.Point(52, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 3;
@@ -79,14 +81,14 @@ namespace LybSys
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(77, 81);
+            this.tbUsername.Location = new System.Drawing.Point(82, 113);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(239, 20);
             this.tbUsername.TabIndex = 4;
             // 
             // tbPassword1
             // 
-            this.tbPassword1.Location = new System.Drawing.Point(77, 146);
+            this.tbPassword1.Location = new System.Drawing.Point(82, 178);
             this.tbPassword1.Name = "tbPassword1";
             this.tbPassword1.Size = new System.Drawing.Size(239, 20);
             this.tbPassword1.TabIndex = 5;
@@ -94,7 +96,7 @@ namespace LybSys
             // 
             // tbPassword2
             // 
-            this.tbPassword2.Location = new System.Drawing.Point(77, 210);
+            this.tbPassword2.Location = new System.Drawing.Point(82, 242);
             this.tbPassword2.Name = "tbPassword2";
             this.tbPassword2.Size = new System.Drawing.Size(239, 20);
             this.tbPassword2.TabIndex = 6;
@@ -103,7 +105,7 @@ namespace LybSys
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(86, 312);
+            this.label4.Location = new System.Drawing.Point(91, 344);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 13);
             this.label4.TabIndex = 7;
@@ -112,7 +114,7 @@ namespace LybSys
             // lnkSI
             // 
             this.lnkSI.AutoSize = true;
-            this.lnkSI.Location = new System.Drawing.Point(225, 312);
+            this.lnkSI.Location = new System.Drawing.Point(230, 344);
             this.lnkSI.Name = "lnkSI";
             this.lnkSI.Size = new System.Drawing.Size(56, 13);
             this.lnkSI.TabIndex = 8;
@@ -120,11 +122,33 @@ namespace LybSys
             this.lnkSI.Text = "Click Here";
             this.lnkSI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSI_LinkClicked);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(135, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 23);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "CREATE ACCOUNT";
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbMessage.Location = new System.Drawing.Point(133, 56);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(0, 16);
+            this.lbMessage.TabIndex = 10;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(386, 378);
+            this.Controls.Add(this.lbMessage);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lnkSI);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbPassword2);
@@ -154,5 +178,7 @@ namespace LybSys
         private System.Windows.Forms.TextBox tbPassword2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel lnkSI;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbMessage;
     }
 }

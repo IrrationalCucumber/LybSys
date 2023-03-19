@@ -40,29 +40,37 @@ namespace LybSys
             this.tbBookAuthor = new System.Windows.Forms.TextBox();
             this.tbBookGenre = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.database1DataSet = new LybSys.Database1DataSet();
             this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.database1DataSet = new LybSys.Database1DataSet();
             this.bOOKSTableAdapter = new LybSys.Database1DataSetTableAdapters.BOOKSTableAdapter();
-            this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.btMenu = new System.Windows.Forms.Button();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btMenu = new System.Windows.Forms.Button();
+            this.lbMessage = new System.Windows.Forms.Label();
+            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookgenre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookDataset = new LybSys.BookDataset();
+            this.bOOKSBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bOOKSTableAdapter1 = new LybSys.BookDatasetTableAdapters.BOOKSTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -123,6 +131,7 @@ namespace LybSys
             this.tbBookID.Name = "tbBookID";
             this.tbBookID.Size = new System.Drawing.Size(100, 20);
             this.tbBookID.TabIndex = 5;
+            this.tbBookID.TextChanged += new System.EventHandler(this.tbBookID_TextChanged);
             // 
             // tbBookTItle
             // 
@@ -150,7 +159,7 @@ namespace LybSys
             this.btAdd.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btAdd.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAdd.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btAdd.Location = new System.Drawing.Point(535, 86);
+            this.btAdd.Location = new System.Drawing.Point(535, 89);
             this.btAdd.Name = "btAdd";
             this.btAdd.Size = new System.Drawing.Size(106, 39);
             this.btAdd.TabIndex = 9;
@@ -158,32 +167,36 @@ namespace LybSys
             this.btAdd.UseVisualStyleBackColor = false;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // button1
+            // btUpdate
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(535, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 40);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "UPDATE";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btUpdate.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btUpdate.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUpdate.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btUpdate.Location = new System.Drawing.Point(535, 134);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(106, 40);
+            this.btUpdate.TabIndex = 10;
+            this.btUpdate.Text = "UPDATE";
+            this.btUpdate.UseVisualStyleBackColor = false;
+            this.btUpdate.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btDelete
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.button2.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button2.Location = new System.Drawing.Point(535, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 39);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "DELETE";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btDelete.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btDelete.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDelete.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btDelete.Location = new System.Drawing.Point(535, 180);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(106, 39);
+            this.btDelete.TabIndex = 11;
+            this.btDelete.Text = "DELETE";
+            this.btDelete.UseVisualStyleBackColor = false;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -191,51 +204,29 @@ namespace LybSys
             this.bookIdDataGridViewTextBoxColumn,
             this.bookTitleDataGridViewTextBoxColumn,
             this.bookAuthorDataGridViewTextBoxColumn,
+            this.bookgenre,
             this.bookStatusDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bOOKSBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(45, 245);
+            this.dataGridView1.DataSource = this.bOOKSBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(45, 256);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(596, 192);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(596, 181);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // database1DataSet
-            // 
-            this.database1DataSet.DataSetName = "Database1DataSet";
-            this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bOOKSBindingSource
             // 
             this.bOOKSBindingSource.DataMember = "BOOKS";
             this.bOOKSBindingSource.DataSource = this.database1DataSet;
             // 
+            // database1DataSet
+            // 
+            this.database1DataSet.DataSetName = "Database1DataSet";
+            this.database1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // bOOKSTableAdapter
             // 
             this.bOOKSTableAdapter.ClearBeforeFill = true;
-            // 
-            // bookIdDataGridViewTextBoxColumn
-            // 
-            this.bookIdDataGridViewTextBoxColumn.DataPropertyName = "bookId";
-            this.bookIdDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.bookIdDataGridViewTextBoxColumn.Name = "bookIdDataGridViewTextBoxColumn";
-            // 
-            // bookTitleDataGridViewTextBoxColumn
-            // 
-            this.bookTitleDataGridViewTextBoxColumn.DataPropertyName = "bookTitle";
-            this.bookTitleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.bookTitleDataGridViewTextBoxColumn.Name = "bookTitleDataGridViewTextBoxColumn";
-            // 
-            // bookAuthorDataGridViewTextBoxColumn
-            // 
-            this.bookAuthorDataGridViewTextBoxColumn.DataPropertyName = "bookAuthor";
-            this.bookAuthorDataGridViewTextBoxColumn.HeaderText = "Author";
-            this.bookAuthorDataGridViewTextBoxColumn.Name = "bookAuthorDataGridViewTextBoxColumn";
-            // 
-            // bookStatusDataGridViewTextBoxColumn
-            // 
-            this.bookStatusDataGridViewTextBoxColumn.DataPropertyName = "bookStatus";
-            this.bookStatusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.bookStatusDataGridViewTextBoxColumn.Name = "bookStatusDataGridViewTextBoxColumn";
             // 
             // filesToolStripMenuItem
             // 
@@ -289,6 +280,20 @@ namespace LybSys
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.summaryToolStripMenuItem});
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // summaryToolStripMenuItem
+            // 
+            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.summaryToolStripMenuItem.Text = "Summary";
+            // 
             // btMenu
             // 
             this.btMenu.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -304,19 +309,75 @@ namespace LybSys
             this.btMenu.UseVisualStyleBackColor = false;
             this.btMenu.Click += new System.EventHandler(this.btMenu_Click);
             // 
-            // reportsToolStripMenuItem
+            // lbMessage
             // 
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.summaryToolStripMenuItem});
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem.Text = "Reports";
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbMessage.Location = new System.Drawing.Point(147, 237);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(0, 13);
+            this.lbMessage.TabIndex = 15;
             // 
-            // summaryToolStripMenuItem
+            // cbStatus
             // 
-            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.summaryToolStripMenuItem.Text = "Summary";
+            this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Available",
+            "Borrowed"});
+            this.cbStatus.Location = new System.Drawing.Point(324, 95);
+            this.cbStatus.Name = "cbStatus";
+            this.cbStatus.Size = new System.Drawing.Size(121, 21);
+            this.cbStatus.TabIndex = 16;
+            this.cbStatus.Text = "Status";
+            // 
+            // bookIdDataGridViewTextBoxColumn
+            // 
+            this.bookIdDataGridViewTextBoxColumn.DataPropertyName = "bookId";
+            this.bookIdDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.bookIdDataGridViewTextBoxColumn.Name = "bookIdDataGridViewTextBoxColumn";
+            this.bookIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookTitleDataGridViewTextBoxColumn
+            // 
+            this.bookTitleDataGridViewTextBoxColumn.DataPropertyName = "bookTitle";
+            this.bookTitleDataGridViewTextBoxColumn.HeaderText = "Title";
+            this.bookTitleDataGridViewTextBoxColumn.Name = "bookTitleDataGridViewTextBoxColumn";
+            this.bookTitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookAuthorDataGridViewTextBoxColumn
+            // 
+            this.bookAuthorDataGridViewTextBoxColumn.DataPropertyName = "bookAuthor";
+            this.bookAuthorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.bookAuthorDataGridViewTextBoxColumn.Name = "bookAuthorDataGridViewTextBoxColumn";
+            this.bookAuthorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookgenre
+            // 
+            this.bookgenre.DataPropertyName = "bookGenre";
+            this.bookgenre.HeaderText = "Genre";
+            this.bookgenre.Name = "bookgenre";
+            this.bookgenre.ReadOnly = true;
+            // 
+            // bookStatusDataGridViewTextBoxColumn
+            // 
+            this.bookStatusDataGridViewTextBoxColumn.DataPropertyName = "bookStatus";
+            this.bookStatusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.bookStatusDataGridViewTextBoxColumn.Name = "bookStatusDataGridViewTextBoxColumn";
+            this.bookStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookDataset
+            // 
+            this.bookDataset.DataSetName = "BookDataset";
+            this.bookDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bOOKSBindingSource1
+            // 
+            this.bOOKSBindingSource1.DataMember = "BOOKS";
+            this.bOOKSBindingSource1.DataSource = this.bookDataset;
+            // 
+            // bOOKSTableAdapter1
+            // 
+            this.bOOKSTableAdapter1.ClearBeforeFill = true;
             // 
             // Books
             // 
@@ -324,10 +385,12 @@ namespace LybSys
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(705, 477);
+            this.Controls.Add(this.cbStatus);
+            this.Controls.Add(this.lbMessage);
             this.Controls.Add(this.btMenu);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btDelete);
+            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.tbBookGenre);
             this.Controls.Add(this.tbBookAuthor);
@@ -344,10 +407,12 @@ namespace LybSys
             this.Text = "Books";
             this.Load += new System.EventHandler(this.Books_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1DataSet)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,16 +430,12 @@ namespace LybSys
         private System.Windows.Forms.TextBox tbBookAuthor;
         private System.Windows.Forms.TextBox tbBookGenre;
         private System.Windows.Forms.Button btAdd;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btUpdate;
+        private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.DataGridView dataGridView1;
         private Database1DataSet database1DataSet;
         private System.Windows.Forms.BindingSource bOOKSBindingSource;
         private Database1DataSetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookTitleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookAuthorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bookStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem filesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrowerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
@@ -384,5 +445,15 @@ namespace LybSys
         private System.Windows.Forms.Button btMenu;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
+        private System.Windows.Forms.Label lbMessage;
+        private System.Windows.Forms.ComboBox cbStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookTitleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookAuthorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookgenre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookStatusDataGridViewTextBoxColumn;
+        private BookDataset bookDataset;
+        private System.Windows.Forms.BindingSource bOOKSBindingSource1;
+        private BookDatasetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter1;
     }
 }

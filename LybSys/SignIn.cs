@@ -67,13 +67,13 @@ namespace LybSys
                 else
                 {
                     dr.Close();
-                    MessageBox.Show("No Account avilable with this username and password ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbMessage.Text = "No Account avilable with this username and password ";
                 }
 
             }
             else
             {
-                MessageBox.Show("Please enter value in all field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbMessage.Text = "Please enter value in all field.";
             }
         }
 

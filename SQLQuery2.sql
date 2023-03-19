@@ -1,5 +1,4 @@
-﻿select * from ACCOUNTS
+﻿select * from TRANSACTIONS
 
-delete from ACCOUNTS where username = 'admin'
-
-insert into ACCOUNTS values ('admin','admin')
+insert into TRANSACTIONS (bookId,bookTitle, dateAdded) 
+values (1, 'test', '2023-03-19')

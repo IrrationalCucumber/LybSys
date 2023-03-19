@@ -61,6 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BookDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +160,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="BookDataset.xsc">
+      <DependentUpon>BookDataset.xsd</DependentUpon>
+    </None>
+    <None Include="BookDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BookDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BookDataset.xss">
+      <DependentUpon>BookDataset.xsd</DependentUpon>
+    </None>
     <None Include="Database1Accounts.xsc">
       <DependentUpon>Database1Accounts.xsd</DependentUpon>
     </None>

@@ -36,6 +36,7 @@ namespace LybSys
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.lnkSU = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
+            this.lbMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,7 +50,7 @@ namespace LybSys
             // 
             // btnSumbit
             // 
-            this.btnSumbit.Location = new System.Drawing.Point(131, 213);
+            this.btnSumbit.Location = new System.Drawing.Point(130, 230);
             this.btnSumbit.Name = "btnSumbit";
             this.btnSumbit.Size = new System.Drawing.Size(75, 23);
             this.btnSumbit.TabIndex = 1;
@@ -85,7 +86,7 @@ namespace LybSys
             // 
             this.lnkSU.AutoSize = true;
             this.lnkSU.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkSU.Location = new System.Drawing.Point(188, 261);
+            this.lnkSU.Location = new System.Drawing.Point(187, 278);
             this.lnkSU.Name = "lnkSU";
             this.lnkSU.Size = new System.Drawing.Size(59, 13);
             this.lnkSU.TabIndex = 5;
@@ -96,17 +97,28 @@ namespace LybSys
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 261);
+            this.label3.Location = new System.Drawing.Point(68, 278);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Don\'t have an Account?";
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbMessage.Location = new System.Drawing.Point(96, 193);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(0, 15);
+            this.lbMessage.TabIndex = 7;
             // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(346, 338);
+            this.Controls.Add(this.lbMessage);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lnkSU);
             this.Controls.Add(this.tbPassword);
@@ -132,5 +144,6 @@ namespace LybSys
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.LinkLabel lnkSU;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbMessage;
     }
 }

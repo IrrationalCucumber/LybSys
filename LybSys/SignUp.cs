@@ -36,7 +36,7 @@ namespace LybSys
                     if (dr.Read())
                     {
                         dr.Close();
-                        MessageBox.Show("Username Already exist please try another ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        lbMessage.Text = "Username Already exist please try another";
                     }
                     else
                     {
@@ -55,12 +55,12 @@ namespace LybSys
                 }
                 else
                 {
-                    MessageBox.Show("Please enter both password same ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lbMessage.Text = "Please enter both password same ";
                 }
             }
             else
             {
-                MessageBox.Show("Please enter value in all field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbMessage.Text = "Please enter value in all field.";
             }
         }
 

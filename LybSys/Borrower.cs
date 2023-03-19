@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace LybSys
 {
     public partial class Borrower : Form
     {
+        SqlCommand cm;
+        SqlDataReader dr;
+        SqlConnection cn;
+
         public Borrower()
         {
             InitializeComponent();
@@ -21,7 +26,8 @@ namespace LybSys
         {
             // TODO: This line of code loads data into the 'database1Accounts.ACCOUNTS' table. You can move, or remove it, as needed.
             this.aCCOUNTSTableAdapter.Fill(this.database1Accounts.ACCOUNTS);
-
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
+            cn.Open();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -55,6 +61,12 @@ namespace LybSys
             Return rn = new Return();
             rn.Show();
             this.Hide();
+        }
+
+        private void btAdd_Click(object sender, EventArgs e)
+        {
+            SignUp su = new SignUp();
+            su.Show();
         }
     }
 }

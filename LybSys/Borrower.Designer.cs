@@ -37,6 +37,7 @@ namespace LybSys
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btMenu = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,15 +46,14 @@ namespace LybSys
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.database1Accounts = new LybSys.Database1Accounts();
             this.aCCOUNTSBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.database1Accounts = new LybSys.Database1Accounts();
             this.aCCOUNTSTableAdapter = new LybSys.Database1AccountsTableAdapters.ACCOUNTSTableAdapter();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1Accounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTSBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1Accounts)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -80,7 +80,7 @@ namespace LybSys
             // booksToolStripMenuItem
             // 
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.booksToolStripMenuItem.Text = "Books";
             this.booksToolStripMenuItem.Click += new System.EventHandler(this.booksToolStripMenuItem_Click);
             // 
@@ -96,14 +96,14 @@ namespace LybSys
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.borrowToolStripMenuItem.Text = "Borrow";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // returnToolStripMenuItem
             // 
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.returnToolStripMenuItem.Text = "Return";
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
@@ -114,6 +114,12 @@ namespace LybSys
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             this.reportToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.reportToolStripMenuItem.Text = "Report";
+            // 
+            // summaryToolStripMenuItem
+            // 
+            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.summaryToolStripMenuItem.Text = "Summary";
             // 
             // btMenu
             // 
@@ -167,6 +173,7 @@ namespace LybSys
             this.btAdd.TabIndex = 10;
             this.btAdd.Text = "ADD";
             this.btAdd.UseVisualStyleBackColor = false;
+            this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
             // button1
             // 
@@ -205,15 +212,15 @@ namespace LybSys
             this.dataGridView1.Size = new System.Drawing.Size(500, 171);
             this.dataGridView1.TabIndex = 13;
             // 
-            // database1Accounts
-            // 
-            this.database1Accounts.DataSetName = "Database1Accounts";
-            this.database1Accounts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // aCCOUNTSBindingSource
             // 
             this.aCCOUNTSBindingSource.DataMember = "ACCOUNTS";
             this.aCCOUNTSBindingSource.DataSource = this.database1Accounts;
+            // 
+            // database1Accounts
+            // 
+            this.database1Accounts.DataSetName = "Database1Accounts";
+            this.database1Accounts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // aCCOUNTSTableAdapter
             // 
@@ -221,15 +228,9 @@ namespace LybSys
             // 
             // usernameDataGridViewTextBoxColumn
             // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Account Username";
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
             this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
             this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            // 
-            // summaryToolStripMenuItem
-            // 
-            this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.summaryToolStripMenuItem.Text = "Summary";
             // 
             // Borrower
             // 
@@ -254,8 +255,8 @@ namespace LybSys
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.database1Accounts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTSBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.database1Accounts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +282,7 @@ namespace LybSys
         private Database1Accounts database1Accounts;
         private System.Windows.Forms.BindingSource aCCOUNTSBindingSource;
         private Database1AccountsTableAdapters.ACCOUNTSTableAdapter aCCOUNTSTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
     }
 }
