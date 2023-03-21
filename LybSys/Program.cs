@@ -16,7 +16,7 @@ namespace LybSys
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Borrower());
+            Application.Run(new Books());
         }
     }
 }

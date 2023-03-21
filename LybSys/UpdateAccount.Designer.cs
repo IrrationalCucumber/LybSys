@@ -181,6 +181,7 @@ namespace LybSys
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UpdateAccount";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateAccount";
             this.Load += new System.EventHandler(this.UpdateAccount_Load);
             this.ResumeLayout(false);

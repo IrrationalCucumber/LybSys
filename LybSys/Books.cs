@@ -90,21 +90,28 @@ namespace LybSys
 
         private void dataGridView1_CellContentClick(object sender, EventArgs e)
         {
-            DataGridViewCell cell = null;
-            foreach (DataGridViewCell selectedCell in dgView.SelectedCells)
+            /*try
             {
-                cell = selectedCell;
-                break;
-            }
-            if (cell != null)
-            {
-                DataGridViewRow row = cell.OwningRow;
-                tbBookID.Text = row.Cells[0].Value.ToString();
-                tbBookTItle.Text = row.Cells[1].Value.ToString();
-                tbBookAuthor.Text = row.Cells[2].Value.ToString();
-                tbBookGenre.Text = row.Cells[3].Value.ToString();
+                DataGridViewCell cell = null;
+                foreach (DataGridViewCell selectedCell in dgView.SelectedCells)
+                {
+                    cell = selectedCell;
+                    break;
+                }
+                
+                    DataGridViewRow row = cell.OwningRow;
+                    tbBookID.Text = row.Cells[1].Value.ToString();
+                    tbBookTItle.Text = row.Cells[2].Value.ToString();
+                    tbBookAuthor.Text = row.Cells[3].Value.ToString();
+                    tbBookGenre.Text = row.Cells[4].Value.ToString();
+
                 
             }
+
+            catch (Exception ex)
+            {
+                lbMessage.Text = ex.Message;
+            }*/
         }
 
         private void filesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -237,7 +244,7 @@ namespace LybSys
             }
             catch (Exception ex)
             {
-                lbMessage.Text = "Invalid Format";
+                lbMessage.Text = "Invalid Format" + ex.Message;
             }
         }
 
@@ -255,8 +262,7 @@ namespace LybSys
         //wont list based on condition
         private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string Status1 = "Available";
-            string Status2 = "Borrowed";
+            
             if (cbStatus.SelectedItem.ToString() == "Available")
             {
                 SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookStatus = 'Available'", cn);

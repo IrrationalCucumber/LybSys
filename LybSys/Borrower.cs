@@ -14,7 +14,7 @@ namespace LybSys
     public partial class Borrower : Form
     {
         SqlCommand cmd;
-        SqlDataReader dr;
+        //SqlDataReader dr;
         SqlConnection cn;
 
         public Borrower()
@@ -67,7 +67,6 @@ namespace LybSys
         {
             SignUp su = new SignUp();
             su.Show();
-            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
