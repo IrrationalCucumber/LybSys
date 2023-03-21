@@ -46,10 +46,12 @@ namespace LybSys
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aCCOUNTSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.database1Accounts = new LybSys.Database1Accounts();
             this.aCCOUNTSTableAdapter = new LybSys.Database1AccountsTableAdapters.ACCOUNTSTableAdapter();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btRefresh = new System.Windows.Forms.Button();
+            this.lbMessage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aCCOUNTSBindingSource)).BeginInit();
@@ -161,6 +163,7 @@ namespace LybSys
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(277, 20);
             this.tbUsername.TabIndex = 5;
+            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
             // btAdd
             // 
@@ -186,6 +189,7 @@ namespace LybSys
             this.button1.TabIndex = 11;
             this.button1.Text = "UPDATE";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -198,6 +202,7 @@ namespace LybSys
             this.button2.TabIndex = 12;
             this.button2.Text = "DELETE";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // dataGridView1
             // 
@@ -211,6 +216,12 @@ namespace LybSys
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(500, 171);
             this.dataGridView1.TabIndex = 13;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             // 
             // aCCOUNTSBindingSource
             // 
@@ -226,11 +237,28 @@ namespace LybSys
             // 
             this.aCCOUNTSTableAdapter.ClearBeforeFill = true;
             // 
-            // usernameDataGridViewTextBoxColumn
+            // btRefresh
             // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.btRefresh.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btRefresh.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btRefresh.Location = new System.Drawing.Point(31, 207);
+            this.btRefresh.Name = "btRefresh";
+            this.btRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btRefresh.TabIndex = 14;
+            this.btRefresh.Text = "Refresh";
+            this.btRefresh.UseVisualStyleBackColor = false;
+            this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbMessage.Location = new System.Drawing.Point(134, 207);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(0, 15);
+            this.lbMessage.TabIndex = 15;
             // 
             // Borrower
             // 
@@ -238,6 +266,8 @@ namespace LybSys
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(575, 462);
+            this.Controls.Add(this.lbMessage);
+            this.Controls.Add(this.btRefresh);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -284,5 +314,7 @@ namespace LybSys
         private Database1AccountsTableAdapters.ACCOUNTSTableAdapter aCCOUNTSTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btRefresh;
+        private System.Windows.Forms.Label lbMessage;
     }
 }

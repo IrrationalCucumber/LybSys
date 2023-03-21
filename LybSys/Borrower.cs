@@ -13,7 +13,7 @@ namespace LybSys
 {
     public partial class Borrower : Form
     {
-        SqlCommand cm;
+        SqlCommand cmd;
         SqlDataReader dr;
         SqlConnection cn;
 
@@ -67,6 +67,48 @@ namespace LybSys
         {
             SignUp su = new SignUp();
             su.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UpdateAccount update = new UpdateAccount();
+            update.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (tbUsername.Text != string.Empty)
+            {
+                //cn.Open();
+                cmd = new SqlCommand("delete from ACCOUNTS where bookID ='" + tbUsername.Text + "'", cn);
+                cmd.ExecuteNonQuery();
+                //cn.Close();
+                MessageBox.Show("The Account has been removed from the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                lbMessage.Text = "Book not found in the Library";
+            }
+        }
+
+        private void btRefresh_Click(object sender, EventArgs e)
+        {
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from ACCOUNTS", cn);
+            DataTable dtbl = new DataTable();
+            sqlData.Fill(dtbl);
+
+            dataGridView1.DataSource = dtbl;
+        }
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from ACCOUNTS WHERE username = '" + tbUsername.Text + "'", cn);
+            DataTable dtbl = new DataTable();
+            sqlData.Fill(dtbl);
+
+            dataGridView1.DataSource = dtbl;
         }
     }
 }

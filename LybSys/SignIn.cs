@@ -32,7 +32,7 @@ namespace LybSys
             SignUp registration = new SignUp();
             registration.ShowDialog();
         }
-        //public static void userName() { } // for diplaying username
+        public void AccountName() { }
         private void btnSumbit_Click(object sender, EventArgs e)
         {
             if (tbPassword.Text != string.Empty || tbUsername.Text != string.Empty)
@@ -59,7 +59,7 @@ namespace LybSys
                         {
                             MessageBox.Show("Login Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Hide();
-                            //userName() = tbUsername.Text;
+                            string AccountName = tbUsername.Text;
                             Menu menu = new Menu();
                             menu.ShowDialog();
                         }
