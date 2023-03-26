@@ -28,6 +28,8 @@ namespace LybSys
 
         private void Books_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'bookDtabase.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter2.Fill(this.bookDtabase.BOOKS);
             // TODO: This line of code loads data into the 'bookDataset.BOOKS' table. You can move, or remove it, as needed.
             this.bOOKSTableAdapter1.Fill(this.bookDataset.BOOKS);
             // TODO: This line of code loads data into the 'database1DataSet.BOOKS' table. You can move, or remove it, as needed.
@@ -44,7 +46,7 @@ namespace LybSys
         //ADD method for Books
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (tbBookID.Text != string.Empty || tbBookTItle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
+            if (tbBookID.Text != string.Empty || tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
             {
               cmd = new SqlCommand("select * from BOOKS where bookID='" + tbBookID.Text + "'", cn);
               dr = cmd.ExecuteReader();
@@ -59,10 +61,13 @@ namespace LybSys
                   {
                         dr.Close();
                         int bookID = Int32.Parse(tbBookID.Text);
-                        string bookTitle = tbBookTItle.Text;
+                        string bookTitle = tbBookTitle.Text;
                         string bookAuthor = tbBookAuthor.Text;
                         string bookGenre = tbBookGenre.Text;
-                        string bookStatus = "Avalable";
+                        string bookStatus = "Available";
+                    string username = SignIn.AccountName;
+                    //string date = DateTime.Now.ToString();
+                    string type = "Add Book";
                         cn.Close();
                         cn.Open();
                         cmd = new SqlCommand("insert into BOOKS values(@bookId,@bookTitle,@bookAuthor,@bookGenre,@bookStatus)", cn);
@@ -71,12 +76,12 @@ namespace LybSys
                         cmd.Parameters.AddWithValue("bookAuthor", bookAuthor);
                         cmd.Parameters.AddWithValue("bookGenre", bookGenre);
                         cmd.Parameters.AddWithValue("bookStatus", bookStatus);
-                        //cmd = new SqlCommand("insert into TRANSACTIONS values(@bookId,@bookTitle,@dateAdded)", cn);
-                        //cmd.Parameters.AddWithValue("bookId", bookID);
-                        //cmd.Parameters.AddWithValue("bookTitle", bookTitle);
-                        //cmd.Parameters.AddWithValue("dateAdded", DateTime.Now.ToString());
+                        cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+                        cmd.Parameters.AddWithValue("username", username);
+                        cmd.Parameters.AddWithValue("TransactionType", type);
+                        cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
 
-                        cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
                     //cn.Close();
                     MessageBox.Show("Book has been added to the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -90,7 +95,7 @@ namespace LybSys
 
         private void dataGridView1_CellContentClick(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 DataGridViewCell cell = null;
                 foreach (DataGridViewCell selectedCell in dgView.SelectedCells)
@@ -98,20 +103,23 @@ namespace LybSys
                     cell = selectedCell;
                     break;
                 }
-                
-                    DataGridViewRow row = cell.OwningRow;
-                    tbBookID.Text = row.Cells[1].Value.ToString();
-                    tbBookTItle.Text = row.Cells[2].Value.ToString();
-                    tbBookAuthor.Text = row.Cells[3].Value.ToString();
-                    tbBookGenre.Text = row.Cells[4].Value.ToString();
 
-                
+                DataGridViewRow row = cell.OwningRow;
+                tbBookID.Text = row.Cells[0].Value.ToString();
+                tbBookTitle.Text = row.Cells[1].Value.ToString();
+                tbBookAuthor.Text = row.Cells[2].Value.ToString();
+                tbBookGenre.Text = row.Cells[3].Value.ToString();
+
+
             }
-
+            catch (NullReferenceException ex)
+            {
+                lbMessage.Text = ex.Message;
+            }
             catch (Exception ex)
             {
                 lbMessage.Text = ex.Message;
-            }*/
+            }
         }
 
         private void filesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -155,7 +163,7 @@ namespace LybSys
         //UPDATE method for BOOKS
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbBookID.Text != string.Empty || tbBookTItle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
+            if (tbBookID.Text != string.Empty || tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
             {
                 cmd = new SqlCommand("select * from BOOKS where bookID='" + tbBookID.Text + "'", cn);
                 dr = cmd.ExecuteReader();
@@ -163,11 +171,22 @@ namespace LybSys
                 {
                     dr.Close();
                     int bookID = Int32.Parse(tbBookID.Text);
-                    string bookTitle = tbBookTItle.Text;
+                    string bookTitle = tbBookTitle.Text;
                     string bookAuthor = tbBookAuthor.Text;
                     string bookGenre = tbBookGenre.Text;
-                    string bookStatus = cbStatus.SelectedItem.ToString();
+                    string bookStatus = "";
+                    string username = SignIn.AccountName;
                     string date = DateTime.Now.ToString();
+                    string type = "Update Book";
+                    if (rStatusB.Checked)
+                    {
+                        bookStatus = "Borrowed";
+                    }
+                    else if(rStatusA.Checked)
+                    {
+                        bookStatus = "Available";
+                    }
+                    //string date = DateTime.Now.ToString();
                     //cn.Close();
                     //cn.Open();
                     cmd = new SqlCommand("update BOOKS " +
@@ -176,11 +195,11 @@ namespace LybSys
                         "bookgenre='" + bookGenre + "'," +
                         "bookStatus='" + bookStatus + "'" +
                         "WHERE bookId='" + bookID + "'", cn);
-                    
-                    //cmd = new SqlCommand("insert into TRANSACTION values(@bookId,@bookTitle,@dateAdded)", cn);
-                    //cmd.Parameters.AddWithValue("bookId", bookID);
-                    //cmd.Parameters.AddWithValue("bookTitle", bookTitle);
-                    //cmd.Parameters.AddWithValue("dateAdded", date);
+
+                    cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+                    cmd.Parameters.AddWithValue("username", username);
+                    cmd.Parameters.AddWithValue("TransactionType", type);
+                    cmd.Parameters.AddWithValue("dateBorrow", DateTime.Now);
 
                     cmd.ExecuteNonQuery();
                     //cn.Close();
@@ -212,15 +231,17 @@ namespace LybSys
             }
 
             //if book title user only knows
-            if (tbBookTItle.Text != string.Empty)
+            if (tbBookTitle.Text != string.Empty)
             {
-                String bookTitle = tbBookTItle.Text;
-                String date = DateTime.Now.ToString();
-                cmd = new SqlCommand("delete from BOOKS where bookTitle ='" + tbBookTItle.Text + "'", cn);
-                cmd = new SqlCommand("insert into TRANSACTIONS values(@bookTitle,@dateRemoved)", cn);
-                //cmd.Parameters.AddWithValue("bookId", bookID);
-                cmd.Parameters.AddWithValue("bookTitle", bookTitle);
-                cmd.Parameters.AddWithValue("dateRemoved", date);
+                string bookTitle = tbBookTitle.Text;
+                string username = SignIn.AccountName;
+                string type = "Delete Book";
+                //string date = DateTime.Now.ToString();
+                cmd = new SqlCommand("delete from BOOKS where bookTitle ='" + tbBookTitle.Text + "'", cn);
+                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("TransactionType", type);
+                cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
                 cmd.ExecuteNonQuery();
                 //cn.Close();
                 MessageBox.Show("The Book has been removed from the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -255,36 +276,17 @@ namespace LybSys
             sqlData.Fill(dtbl);
 
             dgView.DataSource = dtbl;
+            lbMessage.Text = "";
         }
         
         //search if book status is Available or Borrowed
         //need modification
         //wont list based on condition
-        private void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-            if (cbStatus.SelectedItem.ToString() == "Available")
-            {
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookStatus = 'Available'", cn);
-                DataTable dtbl = new DataTable();
-                sqlData.Fill(dtbl);
-
-                dgView.DataSource = dtbl;
-            }
-            else if (cbStatus.SelectedItem.ToString() == "Borrowed")
-            {
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookStatus = 'Borrowed'", cn);
-                DataTable dtbl = new DataTable();
-                sqlData.Fill(dtbl);
-
-                dgView.DataSource = dtbl;
-            }
-        }
-
+ 
         //search with TItle only
         private void tbBookTItle_TextChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbBookTItle.Text + "'", cn);
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbBookTitle.Text + "'", cn);
             DataTable dtbl = new DataTable();
             sqlData.Fill(dtbl);
 
@@ -307,6 +309,38 @@ namespace LybSys
             sqlData.Fill(dtbl);
 
             dgView.DataSource = dtbl;
+        }
+
+        private void rStatusA_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rStatusA.Checked)
+            {
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookStatus = 'Available'", cn);
+                DataTable dtbl = new DataTable();
+                sqlData.Fill(dtbl);
+
+                dgView.DataSource = dtbl;
+            }
+            
+        }
+
+        private void rStatusB_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rStatusB.Checked)
+            {
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE NOT bookStatus = 'Available'", cn);
+                DataTable dtbl = new DataTable();
+                sqlData.Fill(dtbl);
+
+                dgView.DataSource = dtbl;
+            }
+        }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports rp = new Reports();
+            rp.Show();
+            this.Hide();
         }
     }
 

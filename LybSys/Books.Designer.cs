@@ -36,7 +36,7 @@ namespace LybSys
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbBookID = new System.Windows.Forms.TextBox();
-            this.tbBookTItle = new System.Windows.Forms.TextBox();
+            this.tbBookTitle = new System.Windows.Forms.TextBox();
             this.tbBookAuthor = new System.Windows.Forms.TextBox();
             this.tbBookGenre = new System.Windows.Forms.TextBox();
             this.btAdd = new System.Windows.Forms.Button();
@@ -48,6 +48,8 @@ namespace LybSys
             this.bookAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookGenreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bOOKSBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDtabase = new LybSys.BookDtabase();
             this.bOOKSBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bookDataset = new LybSys.BookDataset();
             this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -63,10 +65,14 @@ namespace LybSys
             this.summaryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btMenu = new System.Windows.Forms.Button();
             this.lbMessage = new System.Windows.Forms.Label();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
             this.bOOKSTableAdapter1 = new LybSys.BookDatasetTableAdapters.BOOKSTableAdapter();
             this.btRefresh = new System.Windows.Forms.Button();
+            this.rStatusA = new System.Windows.Forms.RadioButton();
+            this.rStatusB = new System.Windows.Forms.RadioButton();
+            this.bOOKSTableAdapter2 = new LybSys.BookDtabaseTableAdapters.BOOKSTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDtabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
@@ -134,13 +140,13 @@ namespace LybSys
             this.tbBookID.TabIndex = 5;
             this.tbBookID.TextChanged += new System.EventHandler(this.tbBookID_TextChanged);
             // 
-            // tbBookTItle
+            // tbBookTitle
             // 
-            this.tbBookTItle.Location = new System.Drawing.Point(147, 130);
-            this.tbBookTItle.Name = "tbBookTItle";
-            this.tbBookTItle.Size = new System.Drawing.Size(298, 20);
-            this.tbBookTItle.TabIndex = 6;
-            this.tbBookTItle.TextChanged += new System.EventHandler(this.tbBookTItle_TextChanged);
+            this.tbBookTitle.Location = new System.Drawing.Point(147, 130);
+            this.tbBookTitle.Name = "tbBookTitle";
+            this.tbBookTitle.Size = new System.Drawing.Size(298, 20);
+            this.tbBookTitle.TabIndex = 6;
+            this.tbBookTitle.TextChanged += new System.EventHandler(this.tbBookTItle_TextChanged);
             // 
             // tbBookAuthor
             // 
@@ -210,7 +216,7 @@ namespace LybSys
             this.bookAuthorDataGridViewTextBoxColumn,
             this.bookGenreDataGridViewTextBoxColumn,
             this.bookStatusDataGridViewTextBoxColumn});
-            this.dgView.DataSource = this.bOOKSBindingSource1;
+            this.dgView.DataSource = this.bOOKSBindingSource2;
             this.dgView.Location = new System.Drawing.Point(45, 256);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
@@ -252,6 +258,16 @@ namespace LybSys
             this.bookStatusDataGridViewTextBoxColumn.HeaderText = "Status";
             this.bookStatusDataGridViewTextBoxColumn.Name = "bookStatusDataGridViewTextBoxColumn";
             this.bookStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bOOKSBindingSource2
+            // 
+            this.bOOKSBindingSource2.DataMember = "BOOKS";
+            this.bOOKSBindingSource2.DataSource = this.bookDtabase;
+            // 
+            // bookDtabase
+            // 
+            this.bookDtabase.DataSetName = "BookDtabase";
+            this.bookDtabase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bOOKSBindingSource1
             // 
@@ -340,8 +356,9 @@ namespace LybSys
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
+            this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // btMenu
             // 
@@ -367,19 +384,6 @@ namespace LybSys
             this.lbMessage.Size = new System.Drawing.Size(0, 13);
             this.lbMessage.TabIndex = 15;
             // 
-            // cbStatus
-            // 
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Items.AddRange(new object[] {
-            "Available",
-            "Borrowed"});
-            this.cbStatus.Location = new System.Drawing.Point(324, 95);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(121, 21);
-            this.cbStatus.TabIndex = 16;
-            this.cbStatus.Text = "Status";
-            this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
-            // 
             // bOOKSTableAdapter1
             // 
             this.bOOKSTableAdapter1.ClearBeforeFill = true;
@@ -394,14 +398,43 @@ namespace LybSys
             this.btRefresh.UseVisualStyleBackColor = true;
             this.btRefresh.Click += new System.EventHandler(this.btRefresh_Click);
             // 
+            // rStatusA
+            // 
+            this.rStatusA.AutoSize = true;
+            this.rStatusA.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rStatusA.Location = new System.Drawing.Point(278, 100);
+            this.rStatusA.Name = "rStatusA";
+            this.rStatusA.Size = new System.Drawing.Size(64, 22);
+            this.rStatusA.TabIndex = 18;
+            this.rStatusA.Text = "Available";
+            this.rStatusA.UseVisualStyleBackColor = true;
+            this.rStatusA.CheckedChanged += new System.EventHandler(this.rStatusA_CheckedChanged);
+            // 
+            // rStatusB
+            // 
+            this.rStatusB.AutoSize = true;
+            this.rStatusB.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rStatusB.Location = new System.Drawing.Point(369, 100);
+            this.rStatusB.Name = "rStatusB";
+            this.rStatusB.Size = new System.Drawing.Size(66, 22);
+            this.rStatusB.TabIndex = 19;
+            this.rStatusB.Text = "Borrowed";
+            this.rStatusB.UseVisualStyleBackColor = true;
+            this.rStatusB.CheckedChanged += new System.EventHandler(this.rStatusB_CheckedChanged);
+            // 
+            // bOOKSTableAdapter2
+            // 
+            this.bOOKSTableAdapter2.ClearBeforeFill = true;
+            // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(705, 477);
+            this.Controls.Add(this.rStatusB);
+            this.Controls.Add(this.rStatusA);
             this.Controls.Add(this.btRefresh);
-            this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.lbMessage);
             this.Controls.Add(this.btMenu);
             this.Controls.Add(this.dgView);
@@ -410,7 +443,7 @@ namespace LybSys
             this.Controls.Add(this.btAdd);
             this.Controls.Add(this.tbBookGenre);
             this.Controls.Add(this.tbBookAuthor);
-            this.Controls.Add(this.tbBookTItle);
+            this.Controls.Add(this.tbBookTitle);
             this.Controls.Add(this.tbBookID);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -424,6 +457,8 @@ namespace LybSys
             this.Text = "Books";
             this.Load += new System.EventHandler(this.Books_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDtabase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
@@ -443,7 +478,7 @@ namespace LybSys
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbBookID;
-        private System.Windows.Forms.TextBox tbBookTItle;
+        private System.Windows.Forms.TextBox tbBookTitle;
         private System.Windows.Forms.TextBox tbBookAuthor;
         private System.Windows.Forms.TextBox tbBookGenre;
         private System.Windows.Forms.Button btAdd;
@@ -462,7 +497,6 @@ namespace LybSys
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.Label lbMessage;
-        private System.Windows.Forms.ComboBox cbStatus;
         private BookDataset bookDataset;
         private System.Windows.Forms.BindingSource bOOKSBindingSource1;
         private BookDatasetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter1;
@@ -473,5 +507,10 @@ namespace LybSys
         private System.Windows.Forms.DataGridViewTextBoxColumn bookGenreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridView dgView;
+        private System.Windows.Forms.RadioButton rStatusA;
+        private System.Windows.Forms.RadioButton rStatusB;
+        private BookDtabase bookDtabase;
+        private System.Windows.Forms.BindingSource bOOKSBindingSource2;
+        private BookDtabaseTableAdapters.BOOKSTableAdapter bOOKSTableAdapter2;
     }
 }

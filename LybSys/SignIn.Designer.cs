@@ -54,7 +54,7 @@ namespace LybSys
             this.btnSumbit.Name = "btnSumbit";
             this.btnSumbit.Size = new System.Drawing.Size(75, 23);
             this.btnSumbit.TabIndex = 1;
-            this.btnSumbit.Text = "Sumbit";
+            this.btnSumbit.Text = "Sign In";
             this.btnSumbit.UseVisualStyleBackColor = true;
             this.btnSumbit.Click += new System.EventHandler(this.btnSumbit_Click);
             // 
@@ -117,6 +117,7 @@ namespace LybSys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(346, 338);
             this.Controls.Add(this.lbMessage);
             this.Controls.Add(this.label3);

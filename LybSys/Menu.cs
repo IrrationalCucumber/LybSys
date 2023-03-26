@@ -19,7 +19,7 @@ namespace LybSys
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            //lblUser.Text = SignIn.AccountName;
+            lblUser.Text = SignIn.AccountName;
         }
 
         private void booksToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -31,9 +31,7 @@ namespace LybSys
 
         private void transactionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Reports report = new Reports();
-            report.Show();
-            this.Hide();
+
         }
 
         private void returnedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +51,13 @@ namespace LybSys
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports report = new Reports();
+            report.Show();
+            this.Hide();
         }
     }
 }

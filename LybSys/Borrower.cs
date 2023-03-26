@@ -67,6 +67,14 @@ namespace LybSys
         {
             SignUp su = new SignUp();
             su.Show();
+            string username = SignIn.AccountName;
+            string type = "Add User";
+            //string date = DateTime.Now.ToString();
+            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+            cmd.Parameters.AddWithValue("username", username);
+            cmd.Parameters.AddWithValue("TransactionType", type);
+            cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
+            cmd.ExecuteNonQuery();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,6 +82,14 @@ namespace LybSys
             UpdateAccount update = new UpdateAccount();
             update.Show();
             this.Hide();
+            string username = SignIn.AccountName;
+            string type = "Update User";
+            string date = DateTime.Now.ToString();
+            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+            cmd.Parameters.AddWithValue("username", username);
+            cmd.Parameters.AddWithValue("TransactionType", type);
+            cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
+            cmd.ExecuteNonQuery();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -82,6 +98,13 @@ namespace LybSys
             {
                 //cn.Open();
                 cmd = new SqlCommand("delete from ACCOUNTS where bookID ='" + tbUsername.Text + "'", cn);
+                string username = SignIn.AccountName;
+                string type = "Add User";
+                string date = DateTime.Now.ToString();
+                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("TransactionType", type);
+                cmd.Parameters.AddWithValue("TransactionData", DateTime.Now);
                 cmd.ExecuteNonQuery();
                 //cn.Close();
                 MessageBox.Show("The Account has been removed from the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
