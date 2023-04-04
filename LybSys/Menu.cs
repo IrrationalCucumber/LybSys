@@ -59,5 +59,19 @@ namespace LybSys
             report.Show();
             this.Hide();
         }
+
+        private void borrowerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Borrower br = new Borrower();
+            br.Show();
+            this.Hide();
+        }
+
+        private void btLogOut_Click(object sender, EventArgs e)
+        {
+            SignIn si = new SignIn();
+            si.Show();
+            this.Hide();
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace LybSys
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.filesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.booksToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,7 @@ namespace LybSys
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
+            this.btLogOut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +55,7 @@ namespace LybSys
             this.transactionToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(508, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -69,15 +71,16 @@ namespace LybSys
             // booksToolStripMenuItem1
             // 
             this.booksToolStripMenuItem1.Name = "booksToolStripMenuItem1";
-            this.booksToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.booksToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.booksToolStripMenuItem1.Text = "Books";
             this.booksToolStripMenuItem1.Click += new System.EventHandler(this.booksToolStripMenuItem1_Click);
             // 
             // borrowerToolStripMenuItem
             // 
             this.borrowerToolStripMenuItem.Name = "borrowerToolStripMenuItem";
-            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.borrowerToolStripMenuItem.Text = "Borrower";
+            this.borrowerToolStripMenuItem.Click += new System.EventHandler(this.borrowerToolStripMenuItem_Click);
             // 
             // booksToolStripMenuItem
             // 
@@ -114,27 +117,31 @@ namespace LybSys
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(188, 38);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Parchment", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightGray;
+            this.label1.Location = new System.Drawing.Point(208, 52);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 64);
+            this.label1.Size = new System.Drawing.Size(82, 68);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Welcome \r\n      to";
+            this.label1.Text = "Welcome \r\n          to";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 115);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Parchment", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(54, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(469, 75);
+            this.label2.Size = new System.Drawing.Size(408, 68);
             this.label2.TabIndex = 2;
             this.label2.Text = "Library of Heaven\'s Path";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -142,19 +149,38 @@ namespace LybSys
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.Location = new System.Drawing.Point(223, 202);
+            this.lblUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblUser.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblUser.Location = new System.Drawing.Point(189, 219);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(0, 23);
+            this.lblUser.Size = new System.Drawing.Size(0, 28);
             this.lblUser.TabIndex = 3;
             this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btLogOut
+            // 
+            this.btLogOut.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.btLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btLogOut.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogOut.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btLogOut.Location = new System.Drawing.Point(433, 0);
+            this.btLogOut.Name = "btLogOut";
+            this.btLogOut.Size = new System.Drawing.Size(75, 23);
+            this.btLogOut.TabIndex = 4;
+            this.btLogOut.Text = "Logout";
+            this.btLogOut.UseVisualStyleBackColor = false;
+            this.btLogOut.Click += new System.EventHandler(this.btLogOut_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(484, 340);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(508, 383);
+            this.Controls.Add(this.btLogOut);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -185,5 +211,6 @@ namespace LybSys
         private System.Windows.Forms.ToolStripMenuItem returnedToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem summaryToolStripMenuItem;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Button btLogOut;
     }
 }

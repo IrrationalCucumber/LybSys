@@ -28,12 +28,9 @@ namespace LybSys
 
         private void Books_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bookDtabase.BOOKS' table. You can move, or remove it, as needed.
-            this.bOOKSTableAdapter2.Fill(this.bookDtabase.BOOKS);
-            // TODO: This line of code loads data into the 'bookDataset.BOOKS' table. You can move, or remove it, as needed.
-            this.bOOKSTableAdapter1.Fill(this.bookDataset.BOOKS);
-            // TODO: This line of code loads data into the 'database1DataSet.BOOKS' table. You can move, or remove it, as needed.
-            this.bOOKSTableAdapter.Fill(this.database1DataSet.BOOKS);
+            // TODO: This line of code loads data into the 'dDBooks.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter.Fill(this.dDBooks.BOOKS);
+            
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
             SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS]", cn);
@@ -46,9 +43,12 @@ namespace LybSys
         //ADD method for Books
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (tbBookID.Text != string.Empty || tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
+            //tbBookID.Text != string.Empty ||
+            if ( tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
             {
-              cmd = new SqlCommand("select * from BOOKS where bookID='" + tbBookID.Text + "'", cn);
+                cn.Close();
+                cn.Open();
+              cmd = new SqlCommand("select * from BOOKS where bookTitle='" + tbBookTitle.Text + "'", cn);
               dr = cmd.ExecuteReader();
                 //if method for invalid input
               
@@ -60,7 +60,7 @@ namespace LybSys
                   else
                   {
                         dr.Close();
-                        int bookID = Int32.Parse(tbBookID.Text);
+                        //int bookID = Int32.Parse(tbBookID.Text);
                         string bookTitle = tbBookTitle.Text;
                         string bookAuthor = tbBookAuthor.Text;
                         string bookGenre = tbBookGenre.Text;
@@ -70,19 +70,22 @@ namespace LybSys
                     string type = "Add Book";
                         cn.Close();
                         cn.Open();
-                        cmd = new SqlCommand("insert into BOOKS values(@bookId,@bookTitle,@bookAuthor,@bookGenre,@bookStatus)", cn);
-                        cmd.Parameters.AddWithValue("bookId", bookID);
+                    //@@bookId,
+                    cmd = new SqlCommand("insert into BOOKS values( @bookTitle,@bookAuthor,@bookGenre,@bookStatus)", cn);
+                        //cmd.Parameters.AddWithValue("bookId", bookID);
                         cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                         cmd.Parameters.AddWithValue("bookAuthor", bookAuthor);
                         cmd.Parameters.AddWithValue("bookGenre", bookGenre);
                         cmd.Parameters.AddWithValue("bookStatus", bookStatus);
-                        cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
-                        cmd.Parameters.AddWithValue("username", username);
+                    cmd.ExecuteNonQuery();
+                        cmd = new SqlCommand("insert into TRANSACTIONS values(@user, @TransactionType, @bookTitle, @TransactionDate)", cn);
+                        cmd.Parameters.AddWithValue("user", username);
                         cmd.Parameters.AddWithValue("TransactionType", type);
-                        cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
+                    cmd.Parameters.AddWithValue("bookTitle", bookTitle);
+                    cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
 
                     cmd.ExecuteNonQuery();
-                    //cn.Close();
+                    cn.Close();
                     MessageBox.Show("Book has been added to the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 
@@ -95,38 +98,12 @@ namespace LybSys
 
         private void dataGridView1_CellContentClick(object sender, EventArgs e)
         {
-            try
-            {
-                DataGridViewCell cell = null;
-                foreach (DataGridViewCell selectedCell in dgView.SelectedCells)
-                {
-                    cell = selectedCell;
-                    break;
-                }
-
-                DataGridViewRow row = cell.OwningRow;
-                tbBookID.Text = row.Cells[0].Value.ToString();
-                tbBookTitle.Text = row.Cells[1].Value.ToString();
-                tbBookAuthor.Text = row.Cells[2].Value.ToString();
-                tbBookGenre.Text = row.Cells[3].Value.ToString();
-
-
-            }
-            catch (NullReferenceException ex)
-            {
-                lbMessage.Text = ex.Message;
-            }
-            catch (Exception ex)
-            {
-                lbMessage.Text = ex.Message;
-            }
+            
         }
 
         private void filesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Borrower borrow = new Borrower();
-            borrow.Show();
-            this.Hide();
+            
         }
 
         private void borrowedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,14 +140,14 @@ namespace LybSys
         //UPDATE method for BOOKS
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tbBookID.Text != string.Empty || tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
+            if ( tbBookTitle.Text != string.Empty || tbBookAuthor.Text != string.Empty || tbBookGenre.Text != string.Empty)
             {
-                cmd = new SqlCommand("select * from BOOKS where bookID='" + tbBookID.Text + "'", cn);
+                cmd = new SqlCommand("select * from BOOKS where bookTitle='" + tbBookTitle.Text + "' AND bookId ='"+ lbBookId.Text+"'", cn);
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     dr.Close();
-                    int bookID = Int32.Parse(tbBookID.Text);
+                    int bookID = Int32.Parse(lbBookId.Text);
                     string bookTitle = tbBookTitle.Text;
                     string bookAuthor = tbBookAuthor.Text;
                     string bookGenre = tbBookGenre.Text;
@@ -195,11 +172,12 @@ namespace LybSys
                         "bookgenre='" + bookGenre + "'," +
                         "bookStatus='" + bookStatus + "'" +
                         "WHERE bookId='" + bookID + "'", cn);
-
-                    cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
-                    cmd.Parameters.AddWithValue("username", username);
+                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("insert into TRANSACTIONS values(@user, @TransactionType, @bookTitle, @TransactionDate)", cn);
+                    cmd.Parameters.AddWithValue("user", username);
                     cmd.Parameters.AddWithValue("TransactionType", type);
-                    cmd.Parameters.AddWithValue("dateBorrow", DateTime.Now);
+                    cmd.Parameters.AddWithValue("bookTitle", bookTitle);
+                    cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
 
                     cmd.ExecuteNonQuery();
                     //cn.Close();
@@ -217,10 +195,10 @@ namespace LybSys
         private void btDelete_Click(object sender, EventArgs e)
         {
             //if book ID user knows
-            if (tbBookID.Text != string.Empty)
+            if (lbBookId.Text != string.Empty)
             {
                 //cn.Open();
-                cmd = new SqlCommand("delete from BOOKS where bookID ='" + tbBookID.Text + "'", cn);
+                cmd = new SqlCommand("delete from BOOKS where bookID ='" + lbBookId.Text + "' AND bookTitle ='"+ tbBookTitle.Text +"'", cn);
                 cmd.ExecuteNonQuery();
                 //cn.Close();
                 MessageBox.Show("The Book has been removed from the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -233,14 +211,18 @@ namespace LybSys
             //if book title user only knows
             if (tbBookTitle.Text != string.Empty)
             {
+                //int bookID = Int32.Parse(tbBookID.Text);
                 string bookTitle = tbBookTitle.Text;
                 string username = SignIn.AccountName;
                 string type = "Delete Book";
                 //string date = DateTime.Now.ToString();
-                cmd = new SqlCommand("delete from BOOKS where bookTitle ='" + tbBookTitle.Text + "'", cn);
-                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
-                cmd.Parameters.AddWithValue("username", username);
+                cmd = new SqlCommand("delete from BOOKS where bookId ='" + lbBookId.Text + "' OR bookTitle = '"+ tbBookTitle.Text +"'", cn);
+                cmd.ExecuteNonQuery();
+                //@bookId
+                cmd = new SqlCommand("insert into TRANSACTIONS values(@user, @TransactionType, @bookTitle, @TransactionDate)", cn);
+                cmd.Parameters.AddWithValue("user", username);
                 cmd.Parameters.AddWithValue("TransactionType", type);
+                cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                 cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
                 cmd.ExecuteNonQuery();
                 //cn.Close();
@@ -255,18 +237,7 @@ namespace LybSys
         //Search with book ID only
         private void tbBookID_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookID = '" + tbBookID.Text + "'", cn);
-                DataTable dtbl = new DataTable();
-                sqlData.Fill(dtbl);
-
-                dgView.DataSource = dtbl;
-            }
-            catch (Exception ex)
-            {
-                lbMessage.Text = "Invalid Format" + ex.Message;
-            }
+            
         }
 
         private void btRefresh_Click(object sender, EventArgs e)
@@ -277,6 +248,7 @@ namespace LybSys
 
             dgView.DataSource = dtbl;
             lbMessage.Text = "";
+            lbBookId.Text = "";
         }
         
         //search if book status is Available or Borrowed
@@ -340,6 +312,55 @@ namespace LybSys
         {
             Reports rp = new Reports();
             rp.Show();
+            this.Hide();
+        }
+
+        private void dgView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewCell cell = null;
+                foreach (DataGridViewCell selectedCell in dgView.SelectedCells)
+                {
+                    cell = selectedCell;
+                    break;
+                }
+
+                DataGridViewRow row = cell.OwningRow;
+                lbBookId.Text = row.Cells[0].Value.ToString();
+                tbBookTitle.Text = row.Cells[1].Value.ToString();
+                tbBookAuthor.Text = row.Cells[2].Value.ToString();
+                tbBookGenre.Text = row.Cells[3].Value.ToString();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                lbMessage.Text = "";
+            }
+        
+            //catch (NullReferenceException ex)
+            //{
+                //lbMessage.Text = ex.Message;
+            //}
+            
+        }
+
+        private void borrowerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Borrower br = new Borrower();
+            br.Show();
             this.Hide();
         }
     }

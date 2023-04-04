@@ -23,10 +23,24 @@ namespace LybSys
 
         private void Reports_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'returnDatabase.BORROW' table. You can move, or remove it, as needed.
-            this.bORROWTableAdapter.Fill(this.returnDatabase.BORROW);
-            // TODO: This line of code loads data into the 'transactionDatabase.TRANSACTIONS' table. You can move, or remove it, as needed.
-            this.tRANSACTIONSTableAdapter.Fill(this.transactionDatabase.TRANSACTIONS);
+            // TODO: This line of code loads data into the 'dDTransactions.TRANSACTIONS' table. You can move, or remove it, as needed.
+            this.tRANSACTIONSTableAdapter1.Fill(this.dDTransactions.TRANSACTIONS);
+            
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
+            cn.Open();
+            
+            try
+            {
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS]", cn);
+                DataTable dtbl = new DataTable();
+                sqlData.Fill(dtbl);
+
+                dataGridView1.DataSource = dtbl;
+            }
+            catch (InvalidOperationException ex)
+            {
+                lbMessage.Text = "";
+            }
 
         }
 
@@ -37,11 +51,18 @@ namespace LybSys
 
         private void btRefresh_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS]", cn);
-            DataTable dtbl = new DataTable();
-            sqlData.Fill(dtbl);
+            try
+            {
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS]", cn);
+                DataTable dtbl = new DataTable();
+                sqlData.Fill(dtbl);
 
-            dataGridView1.DataSource = dtbl;
+                dataGridView1.DataSource = dtbl;
+            }
+            catch(InvalidOperationException ex)
+            {
+                lbMessage.Text = "";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,6 +98,27 @@ namespace LybSys
             Return rn = new Return();
             rn.Show();
             this.Hide();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btSort_Click(object sender, EventArgs e)
+        {
+
+            string date = dtp.Value.ToString();
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS] where TransactionDate = "+ date +"", cn);
+                DataTable dtbl = new DataTable();
+                sqlData.Fill(dtbl);
+
+                dataGridView1.DataSource = dtbl;
+           // }
+           // catch (InvalidOperationException ex)
+            //{
+                lbMessage.Text = "";
+            //}
         }
     }
 }

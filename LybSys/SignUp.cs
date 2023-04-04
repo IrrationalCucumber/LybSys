@@ -51,6 +51,9 @@ namespace LybSys
                         cmd.ExecuteNonQuery();
                         cn.Close();
                         MessageBox.Show("Your Account is created . Please login now.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SignIn si = new SignIn();
+                        si.Show();
+                        this.Hide();
                     }
                 }
                 else

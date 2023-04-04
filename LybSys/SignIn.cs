@@ -51,10 +51,10 @@ namespace LybSys
                     //this.Hide();
                     //Home home = new Home();
                     //home.ShowDialog();
-                }
-                cn.Close();
-                if (IsExist)  //if record exis in db , it will return true, otherwise it will return false  
-                {
+
+                    cn.Close();
+                    if (IsExist)  //if record exis in db , it will return true, otherwise it will return false  
+                    {
                         if (Cryptomining.Decrypt(Password).Equals(tbPassword.Text))
                         {
                             //MessageBox.Show("Login Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -63,7 +63,10 @@ namespace LybSys
                             Menu menu = new Menu();
                             menu.ShowDialog();
                         }
-                 }
+                    }
+                    dr.Close();
+                    lbMessage.Text = "Incorrect Password/Username ";
+                }
                 else
                 {
                     dr.Close();

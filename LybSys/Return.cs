@@ -24,16 +24,8 @@ namespace LybSys
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (tbSearch.Text == string.Empty)
-            {
-                tbSearch.Text = "....";
-            }
-            else
-            {
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbSearch.Text + "' OR" +
-                    "bookId = '" + tbSearch.Text + "' OR" +
-                    "bookAuthor '" + tbSearch.Text + "' OR" +
-                    "bookGenre '" + tbSearch.Text + "' OR " +
-                    "bookStatus '" + tbSearch.Text + "'", cn);
+            { 
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbSearch.Text + "'", cn);
                 DataTable dtbl = new DataTable();
                 sqlData.Fill(dtbl);
 
@@ -48,11 +40,12 @@ namespace LybSys
 
         private void Return_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bookReturnDatabase.BOOKS' table. You can move, or remove it, as needed.
-            this.bOOKSTableAdapter.Fill(this.bookReturnDatabase.BOOKS);
+            // TODO: This line of code loads data into the 'dDReturn2.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter.Fill(this.dDReturn2.BOOKS);
+
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
-            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS] WHERE bookStatus='Available'", cn);
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS], TRANSACTIONS WHERE BOOKS.bookStatus !='Available'", cn);
             DataTable dtbl = new DataTable();
             sqlData.Fill(dtbl);
 
@@ -61,33 +54,12 @@ namespace LybSys
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                DataGridViewCell cell = null;
-                foreach (DataGridViewCell selectedCell in dataGridView1.SelectedCells)
-                {
-                    cell = selectedCell;
-                    break;
-                }
-
-                DataGridViewRow row = cell.OwningRow;
-                tbBookId.Text = row.Cells[0].Value.ToString();
-                tbBookTitle.Text = row.Cells[1].Value.ToString();
-                tbBookAuthor.Text = row.Cells[2].Value.ToString();
-                tbBookGenre.Text = row.Cells[3].Value.ToString();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                lbMessage.Text = ex.Message;
-            }
+            
         }
 
         private void btRefresh_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS] WHERE bookStatus ='Borrowed'", cn);
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS], TRANSACTIONS WHERE BOOKS.bookStatus !='Available'", cn);
             DataTable dtbl = new DataTable();
             sqlData.Fill(dtbl);
 
@@ -107,28 +79,33 @@ namespace LybSys
                 string type = "Book Return";
                 cn.Close();
                 cn.Open();
+                /*
                 cmd = new SqlCommand("insert into RETURN values(@username,@bookId,@bookTitle,@dateReturn)", cn);
                 cmd.Parameters.AddWithValue("username", username);
                 cmd.Parameters.AddWithValue("bookId", bookID);
                 cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                 cmd.Parameters.AddWithValue("dateReturn", DateTime.Now);
+                cmd.ExecuteNonQuery();
+                */
                 //update BOOKS database status
                 cmd = new SqlCommand("update BOOKS " +
                     "set bookStatus='" + bookStatus + "'" +
                     "WHERE bookId='" + bookID + "'", cn);
+                cmd.ExecuteNonQuery();
                 //add transaction aas borrow
-                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
-                cmd.Parameters.AddWithValue("username", username);
+                cmd = new SqlCommand("insert into TRANSACTIONS values(@user, @TransactionType, @bookTitle, @TransactionDate)", cn);
+                cmd.Parameters.AddWithValue("user", username);
                 cmd.Parameters.AddWithValue("TransactionType", type);
+                cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                 cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
 
                 cmd.ExecuteNonQuery();
                 //cn.Close();
-                MessageBox.Show("Book has been Borrowed", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Book has been Returned", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                lbMessage.Text = "Please enter value in all field.";
+                lbMessage.Text = "Book not found";
             }
         }
 
@@ -170,6 +147,32 @@ namespace LybSys
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewCell cell = null;
+                foreach (DataGridViewCell selectedCell in dataGridView1.SelectedCells)
+                {
+                    cell = selectedCell;
+                    break;
+                }
+
+                DataGridViewRow row = cell.OwningRow;
+                tbBookId.Text = row.Cells[0].Value.ToString();
+                tbBookTitle.Text = row.Cells[1].Value.ToString();
+                tbBookAuthor.Text = row.Cells[2].Value.ToString();
+                tbBookGenre.Text = row.Cells[3].Value.ToString();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                lbMessage.Text = ex.Message;
+            }
         }
     }
 }

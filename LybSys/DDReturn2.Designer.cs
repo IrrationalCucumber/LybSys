@@ -20,9 +20,9 @@ namespace LybSys {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("BookDataset")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DDReturn2")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class BookDataset : global::System.Data.DataSet {
+    public partial class DDReturn2 : global::System.Data.DataSet {
         
         private BOOKSDataTable tableBOOKS;
         
@@ -30,7 +30,7 @@ namespace LybSys {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public BookDataset() {
+        public DDReturn2() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace LybSys {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected BookDataset(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DDReturn2(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace LybSys {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            BookDataset cln = ((BookDataset)(base.Clone()));
+            DDReturn2 cln = ((DDReturn2)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace LybSys {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "BookDataset";
+            this.DataSetName = "DDReturn2";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/BookDataset.xsd";
+            this.Namespace = "http://tempuri.org/DDReturn2.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableBOOKS = new BOOKSDataTable();
@@ -225,7 +225,7 @@ namespace LybSys {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            BookDataset ds = new BookDataset();
+            DDReturn2 ds = new DDReturn2();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -399,10 +399,10 @@ namespace LybSys {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public BOOKSRow AddBOOKSRow(int bookId, string bookTitle, string bookAuthor, string bookGenre, string bookStatus) {
+            public BOOKSRow AddBOOKSRow(string bookTitle, string bookAuthor, string bookGenre, string bookStatus) {
                 BOOKSRow rowBOOKSRow = ((BOOKSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        bookId,
+                        null,
                         bookTitle,
                         bookAuthor,
                         bookGenre,
@@ -458,7 +458,11 @@ namespace LybSys {
                 base.Columns.Add(this.columnbookStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnbookId}, true));
+                this.columnbookId.AutoIncrement = true;
+                this.columnbookId.AutoIncrementSeed = -1;
+                this.columnbookId.AutoIncrementStep = -1;
                 this.columnbookId.AllowDBNull = false;
+                this.columnbookId.ReadOnly = true;
                 this.columnbookId.Unique = true;
                 this.columnbookTitle.MaxLength = 50;
                 this.columnbookAuthor.MaxLength = 50;
@@ -531,7 +535,7 @@ namespace LybSys {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                BookDataset ds = new BookDataset();
+                DDReturn2 ds = new DDReturn2();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -763,7 +767,7 @@ namespace LybSys {
         }
     }
 }
-namespace LybSys.BookDatasetTableAdapters {
+namespace LybSys.DDReturn2TableAdapters {
     
     
     /// <summary>
@@ -908,22 +912,20 @@ namespace LybSys.BookDatasetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BOOKS] ([bookId], [bookTitle], [bookAuthor], [bookGenre], [boo" +
-                "kStatus]) VALUES (@bookId, @bookTitle, @bookAuthor, @bookGenre, @bookStatus);\r\nS" +
-                "ELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (boo" +
-                "kId = @bookId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BOOKS] ([bookTitle], [bookAuthor], [bookGenre], [bookStatus]) " +
+                "VALUES (@bookTitle, @bookAuthor, @bookGenre, @bookStatus);\r\nSELECT bookId, bookT" +
+                "itle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bookId = SCOPE_IDENTIT" +
+                "Y())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookAuthor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookAuthor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookGenre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookGenre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookStatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[BOOKS] SET [bookId] = @bookId, [bookTitle] = @bookTitle, [bookAuthor] = @bookAuthor, [bookGenre] = @bookGenre, [bookStatus] = @bookStatus WHERE (([bookId] = @Original_bookId) AND ((@IsNull_bookTitle = 1 AND [bookTitle] IS NULL) OR ([bookTitle] = @Original_bookTitle)) AND ((@IsNull_bookAuthor = 1 AND [bookAuthor] IS NULL) OR ([bookAuthor] = @Original_bookAuthor)) AND ((@IsNull_bookGenre = 1 AND [bookGenre] IS NULL) OR ([bookGenre] = @Original_bookGenre)) AND ((@IsNull_bookStatus = 1 AND [bookStatus] IS NULL) OR ([bookStatus] = @Original_bookStatus)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[BOOKS] SET [bookTitle] = @bookTitle, [bookAuthor] = @bookAuthor, [bookGenre] = @bookGenre, [bookStatus] = @bookStatus WHERE (([bookId] = @Original_bookId) AND ((@IsNull_bookTitle = 1 AND [bookTitle] IS NULL) OR ([bookTitle] = @Original_bookTitle)) AND ((@IsNull_bookAuthor = 1 AND [bookAuthor] IS NULL) OR ([bookAuthor] = @Original_bookAuthor)) AND ((@IsNull_bookGenre = 1 AND [bookGenre] IS NULL) OR ([bookGenre] = @Original_bookGenre)) AND ((@IsNull_bookStatus = 1 AND [bookStatus] IS NULL) OR ([bookStatus] = @Original_bookStatus)));
 SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bookId = @bookId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookTitle", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookTitle", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookAuthor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookAuthor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookGenre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookGenre", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -937,6 +939,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bookGenre", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookGenre", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_bookStatus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookStatus", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bookStatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bookStatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bookId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "bookId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -960,7 +963,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(BookDataset.BOOKSDataTable dataTable) {
+        public virtual int Fill(DDReturn2.BOOKSDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -973,9 +976,9 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual BookDataset.BOOKSDataTable GetData() {
+        public virtual DDReturn2.BOOKSDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            BookDataset.BOOKSDataTable dataTable = new BookDataset.BOOKSDataTable();
+            DDReturn2.BOOKSDataTable dataTable = new DDReturn2.BOOKSDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -983,14 +986,14 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(BookDataset.BOOKSDataTable dataTable) {
+        public virtual int Update(DDReturn2.BOOKSDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(BookDataset dataSet) {
+        public virtual int Update(DDReturn2 dataSet) {
             return this.Adapter.Update(dataSet, "BOOKS");
         }
         
@@ -1067,31 +1070,30 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int bookId, string bookTitle, string bookAuthor, string bookGenre, string bookStatus) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(bookId));
+        public virtual int Insert(string bookTitle, string bookAuthor, string bookGenre, string bookStatus) {
             if ((bookTitle == null)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(bookTitle));
+            }
+            if ((bookAuthor == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(bookTitle));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(bookAuthor));
             }
-            if ((bookAuthor == null)) {
+            if ((bookGenre == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(bookAuthor));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(bookGenre));
             }
-            if ((bookGenre == null)) {
+            if ((bookStatus == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(bookGenre));
-            }
-            if ((bookStatus == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(bookStatus));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(bookStatus));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1113,65 +1115,65 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int bookId, string bookTitle, string bookAuthor, string bookGenre, string bookStatus, int Original_bookId, string Original_bookTitle, string Original_bookAuthor, string Original_bookGenre, string Original_bookStatus) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(bookId));
+        public virtual int Update(string bookTitle, string bookAuthor, string bookGenre, string bookStatus, int Original_bookId, string Original_bookTitle, string Original_bookAuthor, string Original_bookGenre, string Original_bookStatus, int bookId) {
             if ((bookTitle == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(bookTitle));
+            }
+            if ((bookAuthor == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(bookTitle));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(bookAuthor));
             }
-            if ((bookAuthor == null)) {
+            if ((bookGenre == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(bookAuthor));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(bookGenre));
             }
-            if ((bookGenre == null)) {
+            if ((bookStatus == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(bookGenre));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(bookStatus));
             }
-            if ((bookStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(bookStatus));
-            }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_bookId));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_bookId));
             if ((Original_bookTitle == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_bookTitle));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_bookTitle));
             }
             if ((Original_bookAuthor == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_bookAuthor));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_bookAuthor));
             }
             if ((Original_bookGenre == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_bookGenre));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_bookGenre));
             }
             if ((Original_bookStatus == null)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_bookStatus));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_bookStatus));
             }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(bookId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1193,7 +1195,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string bookTitle, string bookAuthor, string bookGenre, string bookStatus, int Original_bookId, string Original_bookTitle, string Original_bookAuthor, string Original_bookGenre, string Original_bookStatus) {
-            return this.Update(Original_bookId, bookTitle, bookAuthor, bookGenre, bookStatus, Original_bookId, Original_bookTitle, Original_bookAuthor, Original_bookGenre, Original_bookStatus);
+            return this.Update(bookTitle, bookAuthor, bookGenre, bookStatus, Original_bookId, Original_bookTitle, Original_bookAuthor, Original_bookGenre, Original_bookStatus, Original_bookId);
         }
     }
     
@@ -1288,7 +1290,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(BookDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DDReturn2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._bOOKSTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.BOOKS.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1307,7 +1309,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(BookDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DDReturn2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._bOOKSTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.BOOKS.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1325,7 +1327,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(BookDataset dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DDReturn2 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._bOOKSTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.BOOKS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1367,7 +1369,7 @@ SELECT bookId, bookTitle, bookAuthor, bookGenre, bookStatus FROM BOOKS WHERE (bo
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(BookDataset dataSet) {
+        public virtual int UpdateAll(DDReturn2 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

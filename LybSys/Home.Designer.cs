@@ -33,16 +33,20 @@ namespace LybSys
             this.si = new System.Windows.Forms.Button();
             this.su = new System.Windows.Forms.Button();
             this.gb = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Playbill", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 49);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.LightGray;
+            this.label1.Location = new System.Drawing.Point(45, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(197, 81);
+            this.label1.Size = new System.Drawing.Size(196, 75);
             this.label1.TabIndex = 1;
             this.label1.Text = "Welcome";
             // 
@@ -76,11 +80,23 @@ namespace LybSys
             this.gb.TabIndex = 4;
             this.gb.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LybSys.Properties.Resources.R;
+            this.pictureBox1.Location = new System.Drawing.Point(265, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(290, 261);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 338);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(587, 363);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gb);
             this.Controls.Add(this.label1);
             this.Name = "Home";
@@ -88,6 +104,7 @@ namespace LybSys
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.gb.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,6 +115,7 @@ namespace LybSys
         private System.Windows.Forms.Button si;
         private System.Windows.Forms.Button su;
         private System.Windows.Forms.GroupBox gb;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

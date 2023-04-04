@@ -39,10 +39,11 @@ namespace LybSys
 
         private void Borrow_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dDReturn.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter.Fill(this.dDReturn.BOOKS);
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
-            // TODO: This line of code loads data into the 'bookBorrowDataset.BOOKS' table. You can move, or remove it, as needed.
-            this.bOOKSTableAdapter.Fill(this.bookBorrowDataset.BOOKS);
+            
             SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[BOOKS] WHERE bookStatus='Available'", cn);
             DataTable dtbl = new DataTable();
             sqlData.Fill(dtbl);
@@ -54,28 +55,7 @@ namespace LybSys
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                DataGridViewCell cell = null;
-                foreach (DataGridViewCell selectedCell in dataGridView1.SelectedCells)
-                {
-                    cell = selectedCell;
-                    break;
-                }
-
-                DataGridViewRow row = cell.OwningRow;
-                tbBooKId.Text = row.Cells[0].Value.ToString();
-                tbBookTitle.Text = row.Cells[1].Value.ToString();
-                tbBookAuthor.Text = row.Cells[2].Value.ToString();
-                tbBookGenre.Text = row.Cells[3].Value.ToString();
-
-
-            }
-
-            catch (Exception ex)
-            {
-                lbMessage.Text = ex.Message;
-            }
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -95,18 +75,22 @@ namespace LybSys
                     string type = "Borrow";
                     cn.Close();
                     cn.Open();
+                /*
                     cmd = new SqlCommand("insert into BORROW values(@username,@bookId,@bookTitle,@dateBorrow)", cn);
                     cmd.Parameters.AddWithValue("username", username);
                     cmd.Parameters.AddWithValue("bookId", bookID);
                     cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                     cmd.Parameters.AddWithValue("dateBorrow", DateTime.Now);
+                */
                     //update BOOKS database status
                     cmd = new SqlCommand("update BOOKS " +
                         "set bookStatus='" + bookStatus + "'" +
                         "WHERE bookId='" + bookID + "'", cn);
                 //add transaction aas borrow
-                    cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
-                    cmd.Parameters.AddWithValue("username", username);
+                cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("insert into TRANSACTIONS values(@user, @TransactionType, @bookTitle, @TransactionDate)", cn);
+                    cmd.Parameters.AddWithValue("user", username);
+                cmd.Parameters.AddWithValue("bookTitle", bookTitle);
                     cmd.Parameters.AddWithValue("TransactionType", type);
                     cmd.Parameters.AddWithValue("TransactionDAte", DateTime.Now);
 
@@ -124,15 +108,11 @@ namespace LybSys
         {
             if (tbSearch.Text == string.Empty)
             {
-                tbSearch.Text = "....";
+                tbSearch.Text = "Search book Title...";
             }
             else
             {
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbSearch.Text + "' OR" +
-                    "bookId = '" + tbSearch.Text + "' OR" +
-                    "bookAuthor '" + tbSearch.Text + "' OR" +
-                    "bookGenre '"+tbSearch.Text +"' OR " +
-                    "bookStatus '"+tbSearch.Text +"'", cn);
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from BOOKS WHERE bookTitle = '" + tbSearch.Text + "' AND bookStatus = 'Available'", cn);
                 DataTable dtbl = new DataTable();
                 sqlData.Fill(dtbl);
 
@@ -168,6 +148,32 @@ namespace LybSys
             reports.Show();
             this.Hide();
 
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                DataGridViewCell cell = null;
+                foreach (DataGridViewCell selectedCell in dataGridView1.SelectedCells)
+                {
+                    cell = selectedCell;
+                    break;
+                }
+
+                DataGridViewRow row = cell.OwningRow;
+                tbBooKId.Text = row.Cells[0].Value.ToString();
+                tbBookTitle.Text = row.Cells[1].Value.ToString();
+                tbBookAuthor.Text = row.Cells[2].Value.ToString();
+                tbBookGenre.Text = row.Cells[3].Value.ToString();
+
+
+            }
+
+            catch (Exception ex)
+            {
+                lbMessage.Text = ex.Message;
+            }
         }
     }
 }

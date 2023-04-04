@@ -47,7 +47,7 @@ namespace LybSys
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(126, 9);
+            this.label1.Location = new System.Drawing.Point(125, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 23);
             this.label1.TabIndex = 0;
@@ -67,6 +67,7 @@ namespace LybSys
             // 
             this.tbUsername.Location = new System.Drawing.Point(36, 86);
             this.tbUsername.Name = "tbUsername";
+            this.tbUsername.ReadOnly = true;
             this.tbUsername.Size = new System.Drawing.Size(275, 20);
             this.tbUsername.TabIndex = 2;
             this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
@@ -74,12 +75,13 @@ namespace LybSys
             // lbUsernameMessage
             // 
             this.lbUsernameMessage.AutoSize = true;
-            this.lbUsernameMessage.Font = new System.Drawing.Font("Gloucester MT Extra Condensed", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsernameMessage.Font = new System.Drawing.Font("Arial Narrow", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsernameMessage.ForeColor = System.Drawing.Color.Red;
-            this.lbUsernameMessage.Location = new System.Drawing.Point(146, 312);
+            this.lbUsernameMessage.Location = new System.Drawing.Point(52, 316);
             this.lbUsernameMessage.Name = "lbUsernameMessage";
             this.lbUsernameMessage.Size = new System.Drawing.Size(0, 15);
             this.lbUsernameMessage.TabIndex = 3;
+            this.lbUsernameMessage.Click += new System.EventHandler(this.lbUsernameMessage_Click);
             // 
             // tbOldPassword
             // 
@@ -141,7 +143,7 @@ namespace LybSys
             this.btSubmit.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btSubmit.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btSubmit.Location = new System.Drawing.Point(139, 330);
+            this.btSubmit.Location = new System.Drawing.Point(140, 354);
             this.btSubmit.Name = "btSubmit";
             this.btSubmit.Size = new System.Drawing.Size(75, 23);
             this.btSubmit.TabIndex = 10;
@@ -154,7 +156,7 @@ namespace LybSys
             this.btCancel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btCancel.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btCancel.Location = new System.Drawing.Point(139, 360);
+            this.btCancel.Location = new System.Drawing.Point(140, 384);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 11;
@@ -167,6 +169,7 @@ namespace LybSys
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(352, 441);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btSubmit);
@@ -180,6 +183,7 @@ namespace LybSys
             this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UpdateAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateAccount";

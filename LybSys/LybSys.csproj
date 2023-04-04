@@ -61,26 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookBorrowDataset.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookBorrowDataset.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BookDataset.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookDataset.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BookDtabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookDtabase.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BookReturnDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BookReturnDatabase.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +89,31 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Database1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDBooks.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDBooks.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDReturn.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDReturn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDReturn2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDReturn2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDTransaction.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDTransaction.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDTransactions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DDTransactions.xsd</DependentUpon>
     </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -153,11 +158,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransactionDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TransactionDatabase.xsd</DependentUpon>
-    </Compile>
     <Compile Include="UpdateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,54 +199,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UpdateAccount.resx">
       <DependentUpon>UpdateAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BookBorrowDataset.xsc">
-      <DependentUpon>BookBorrowDataset.xsd</DependentUpon>
-    </None>
-    <None Include="BookBorrowDataset.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BookBorrowDataset.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BookBorrowDataset.xss">
-      <DependentUpon>BookBorrowDataset.xsd</DependentUpon>
-    </None>
-    <None Include="BookDataset.xsc">
-      <DependentUpon>BookDataset.xsd</DependentUpon>
-    </None>
-    <None Include="BookDataset.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BookDataset.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BookDataset.xss">
-      <DependentUpon>BookDataset.xsd</DependentUpon>
-    </None>
-    <None Include="BookDtabase.xsc">
-      <DependentUpon>BookDtabase.xsd</DependentUpon>
-    </None>
-    <None Include="BookDtabase.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BookDtabase.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BookDtabase.xss">
-      <DependentUpon>BookDtabase.xsd</DependentUpon>
-    </None>
-    <None Include="BookReturnDatabase.xsc">
-      <DependentUpon>BookReturnDatabase.xsd</DependentUpon>
-    </None>
-    <None Include="BookReturnDatabase.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BookReturnDatabase.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BookReturnDatabase.xss">
-      <DependentUpon>BookReturnDatabase.xsd</DependentUpon>
-    </None>
     <None Include="Database1Accounts.xsc">
       <DependentUpon>Database1Accounts.xsd</DependentUpon>
     </None>
@@ -269,6 +226,61 @@
     <None Include="Database1DataSet.xss">
       <DependentUpon>Database1DataSet.xsd</DependentUpon>
     </None>
+    <None Include="DDBooks.xsc">
+      <DependentUpon>DDBooks.xsd</DependentUpon>
+    </None>
+    <None Include="DDBooks.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DDBooks.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DDBooks.xss">
+      <DependentUpon>DDBooks.xsd</DependentUpon>
+    </None>
+    <None Include="DDReturn.xsc">
+      <DependentUpon>DDReturn.xsd</DependentUpon>
+    </None>
+    <None Include="DDReturn.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DDReturn.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DDReturn.xss">
+      <DependentUpon>DDReturn.xsd</DependentUpon>
+    </None>
+    <None Include="DDReturn2.xsc">
+      <DependentUpon>DDReturn2.xsd</DependentUpon>
+    </None>
+    <None Include="DDReturn2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DDReturn2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DDReturn2.xss">
+      <DependentUpon>DDReturn2.xsd</DependentUpon>
+    </None>
+    <None Include="DDTransaction.xsc">
+      <DependentUpon>DDTransaction.xsd</DependentUpon>
+    </None>
+    <None Include="DDTransaction.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DDTransaction.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DDTransaction.xss">
+      <DependentUpon>DDTransaction.xsd</DependentUpon>
+    </None>
+    <None Include="DDTransactions.xsc">
+      <DependentUpon>DDTransactions.xsd</DependentUpon>
+    </None>
+    <None Include="DDTransactions.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DDTransactions.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DDTransactions.xss">
+      <DependentUpon>DDTransactions.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -289,17 +301,6 @@
     <None Include="ReturnDatabase.xss">
       <DependentUpon>ReturnDatabase.xsd</DependentUpon>
     </None>
-    <None Include="TransactionDatabase.xsc">
-      <DependentUpon>TransactionDatabase.xsd</DependentUpon>
-    </None>
-    <None Include="TransactionDatabase.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TransactionDatabase.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TransactionDatabase.xss">
-      <DependentUpon>TransactionDatabase.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -312,6 +313,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\R.gif" />
+    <None Include="Resources\SF_Wallpaper_Campfire_Ultrawide_3840x679.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

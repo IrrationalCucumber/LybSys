@@ -23,19 +23,15 @@ namespace LybSys
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            cmd = new SqlCommand("select * from ACCOUNTS where username='" + tbUsername.Text + "'", cn);
-            dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                dr.Close();
-                lbUsernameMessage.Text = "Username Already exist please try another";
-            }
+            
         }
 
         private void UpdateAccount_Load(object sender, EventArgs e)
         {
             cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Class\DYBSYS32\LybSys\LybSys\Database1.mdf;Integrated Security=True");
             cn.Open();
+            tbUsername.Text = Borrower.Username;
+            
         }
 
         private void tbNewPassword2_TextChanged(object sender, EventArgs e)
@@ -44,14 +40,18 @@ namespace LybSys
             {
                 lbUsernameMessage.Text = "Passowrds does not match";
             }
+            else {
+                lbUsernameMessage.Text = "";
+            }
         }
 
         private void btSubmit_Click(object sender, EventArgs e)
         {
             if (tbNewPassword1.Text != string.Empty || tbNewPassword2.Text != string.Empty || tbUsername.Text != string.Empty || tbOldPassword.Text != string.Empty)
             {
-                if (tbNewPassword1.Text == tbOldPassword.Text)
+                if (tbNewPassword1.Text != tbOldPassword.Text)
                 {
+                    /*
                     cmd = new SqlCommand("select * from ACCOUNTS where username='" + tbUsername.Text + "'", cn);
                     dr = cmd.ExecuteReader();
                     if (dr.Read())
@@ -60,22 +60,25 @@ namespace LybSys
                         lbUsernameMessage.Text = "Username Already exist please try another";
                     }
                     else
-                    {
-                        dr.Close();
+                    */
+                    
+                        //dr.Close();
                         string UserName = tbUsername.Text;
                         string Password = Cryptomining.Encrypt(tbNewPassword1.Text.ToString());
                         cn.Close();
                         cn.Open();
-                        cmd = new SqlCommand("insert into ACCOUNTS values(@username,@password)", cn);
-                        cmd.Parameters.AddWithValue("username", UserName);
-                        cmd.Parameters.AddWithValue("password", Password);
+                        cmd = new SqlCommand("update ACCOUNTS" +
+                            "set password = '"+ tbNewPassword1 +"'" +
+                            "WHERE username = '"+ tbUsername +"'", cn);
+                        //cmd.Parameters.AddWithValue("username", UserName);
+                        //cmd.Parameters.AddWithValue("password", Password);
                         cmd.ExecuteNonQuery();
                         cn.Close();
-                        MessageBox.Show("Your Account has been updated . Please login now.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Your Account has been updated .\n Please login now.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                         Menu menu = new Menu();
                         menu.Show();
-                    }
+                    
                 }
                 else
                 {
@@ -93,6 +96,11 @@ namespace LybSys
             Borrower borrower = new Borrower();
             borrower.Show();
             this.Hide();
+        }
+
+        private void lbUsernameMessage_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

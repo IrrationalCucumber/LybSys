@@ -49,11 +49,9 @@ namespace LybSys
             this.tbBookTitle = new System.Windows.Forms.TextBox();
             this.tbBookAuthor = new System.Windows.Forms.TextBox();
             this.tbBookGenre = new System.Windows.Forms.TextBox();
-            this.bookDataset = new LybSys.BookDataset();
-            this.bookDatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bookReturnDatabase = new LybSys.BookReturnDatabase();
+            this.dDReturn2 = new LybSys.DDReturn2();
             this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bOOKSTableAdapter = new LybSys.BookReturnDatabaseTableAdapters.BOOKSTableAdapter();
+            this.bOOKSTableAdapter = new LybSys.DDReturn2TableAdapters.BOOKSTableAdapter();
             this.bookIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bookAuthorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,9 +59,7 @@ namespace LybSys
             this.bookStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDatasetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookReturnDatabase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDReturn2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,14 +89,14 @@ namespace LybSys
             // booksToolStripMenuItem
             // 
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.booksToolStripMenuItem.Text = "Books";
             this.booksToolStripMenuItem.Click += new System.EventHandler(this.booksToolStripMenuItem_Click);
             // 
             // borrowerToolStripMenuItem
             // 
             this.borrowerToolStripMenuItem.Name = "borrowerToolStripMenuItem";
-            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.borrowerToolStripMenuItem.Text = "Borrower";
             this.borrowerToolStripMenuItem.Click += new System.EventHandler(this.borrowerToolStripMenuItem_Click);
             // 
@@ -115,7 +111,7 @@ namespace LybSys
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.borrowToolStripMenuItem.Text = "Borrow";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
@@ -130,7 +126,7 @@ namespace LybSys
             // summaryToolStripMenuItem
             // 
             this.summaryToolStripMenuItem.Name = "summaryToolStripMenuItem";
-            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.summaryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.summaryToolStripMenuItem.Text = "Summary";
             this.summaryToolStripMenuItem.Click += new System.EventHandler(this.summaryToolStripMenuItem_Click);
             // 
@@ -204,6 +200,7 @@ namespace LybSys
             this.dataGridView1.Size = new System.Drawing.Size(606, 150);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // btReturn
             // 
@@ -251,25 +248,15 @@ namespace LybSys
             this.tbBookGenre.TabIndex = 11;
             this.tbBookGenre.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
-            // bookDataset
+            // dDReturn2
             // 
-            this.bookDataset.DataSetName = "BookDataset";
-            this.bookDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bookDatasetBindingSource
-            // 
-            this.bookDatasetBindingSource.DataSource = this.bookDataset;
-            this.bookDatasetBindingSource.Position = 0;
-            // 
-            // bookReturnDatabase
-            // 
-            this.bookReturnDatabase.DataSetName = "BookReturnDatabase";
-            this.bookReturnDatabase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dDReturn2.DataSetName = "DDReturn2";
+            this.dDReturn2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bOOKSBindingSource
             // 
             this.bOOKSBindingSource.DataMember = "BOOKS";
-            this.bOOKSBindingSource.DataSource = this.bookReturnDatabase;
+            this.bOOKSBindingSource.DataSource = this.dDReturn2;
             // 
             // bOOKSTableAdapter
             // 
@@ -330,14 +317,13 @@ namespace LybSys
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Return";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Returned";
             this.Load += new System.EventHandler(this.Return_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDatasetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookReturnDatabase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDReturn2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,11 +351,9 @@ namespace LybSys
         private System.Windows.Forms.TextBox tbBookTitle;
         private System.Windows.Forms.TextBox tbBookAuthor;
         private System.Windows.Forms.TextBox tbBookGenre;
-        private System.Windows.Forms.BindingSource bookDatasetBindingSource;
-        private BookDataset bookDataset;
-        private BookReturnDatabase bookReturnDatabase;
+        private DDReturn2 dDReturn2;
         private System.Windows.Forms.BindingSource bOOKSBindingSource;
-        private BookReturnDatabaseTableAdapters.BOOKSTableAdapter bOOKSTableAdapter;
+        private DDReturn2TableAdapters.BOOKSTableAdapter bOOKSTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookTitleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn bookAuthorDataGridViewTextBoxColumn;

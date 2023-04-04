@@ -37,25 +37,24 @@ namespace LybSys
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.transactionDatabase = new LybSys.TransactionDatabase();
-            this.tRANSACTIONSBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tRANSACTIONSTableAdapter = new LybSys.TransactionDatabaseTableAdapters.TRANSACTIONSTableAdapter();
-            this.returnDatabase = new LybSys.ReturnDatabase();
-            this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bORROWTableAdapter = new LybSys.ReturnDatabaseTableAdapters.BORROWTableAdapter();
-            this.TransactionID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btRefresh = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtp = new System.Windows.Forms.DateTimePicker();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btSort = new System.Windows.Forms.Button();
+            this.lbMessage = new System.Windows.Forms.Label();
+            this.dDTransactions = new LybSys.DDTransactions();
+            this.tRANSACTIONSBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tRANSACTIONSTableAdapter1 = new LybSys.DDTransactionsTableAdapters.TRANSACTIONSTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionDatabase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnDatabase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -82,14 +81,14 @@ namespace LybSys
             // booksToolStripMenuItem
             // 
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.booksToolStripMenuItem.Text = "Books";
             this.booksToolStripMenuItem.Click += new System.EventHandler(this.booksToolStripMenuItem_Click);
             // 
             // borrowerToolStripMenuItem
             // 
             this.borrowerToolStripMenuItem.Name = "borrowerToolStripMenuItem";
-            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.borrowerToolStripMenuItem.Text = "Borrower";
             this.borrowerToolStripMenuItem.Click += new System.EventHandler(this.borrowerToolStripMenuItem_Click);
             // 
@@ -105,96 +104,20 @@ namespace LybSys
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.borrowToolStripMenuItem.Text = "Borrow";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // returnToolStripMenuItem
             // 
             this.returnToolStripMenuItem.Name = "returnToolStripMenuItem";
-            this.returnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.returnToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.returnToolStripMenuItem.Text = "Return";
             this.returnToolStripMenuItem.Click += new System.EventHandler(this.returnToolStripMenuItem_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TransactionID,
-            this.username,
-            this.TransactionType,
-            this.TransactionDate});
-            this.dataGridView1.DataSource = this.tRANSACTIONSBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 95);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(746, 332);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // transactionDatabase
-            // 
-            this.transactionDatabase.DataSetName = "TransactionDatabase";
-            this.transactionDatabase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tRANSACTIONSBindingSource
-            // 
-            this.tRANSACTIONSBindingSource.DataMember = "TRANSACTIONS";
-            this.tRANSACTIONSBindingSource.DataSource = this.transactionDatabase;
-            // 
-            // tRANSACTIONSTableAdapter
-            // 
-            this.tRANSACTIONSTableAdapter.ClearBeforeFill = true;
-            // 
-            // returnDatabase
-            // 
-            this.returnDatabase.DataSetName = "ReturnDatabase";
-            this.returnDatabase.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bORROWBindingSource
-            // 
-            this.bORROWBindingSource.DataMember = "BORROW";
-            this.bORROWBindingSource.DataSource = this.returnDatabase;
-            // 
-            // bORROWTableAdapter
-            // 
-            this.bORROWTableAdapter.ClearBeforeFill = true;
-            // 
-            // TransactionID
-            // 
-            this.TransactionID.DataPropertyName = "TransactionID";
-            this.TransactionID.HeaderText = "Transaction ID";
-            this.TransactionID.Name = "TransactionID";
-            this.TransactionID.ReadOnly = true;
-            // 
-            // username
-            // 
-            this.username.DataPropertyName = "username";
-            this.username.HeaderText = "Account";
-            this.username.Name = "username";
-            this.username.ReadOnly = true;
-            // 
-            // TransactionType
-            // 
-            this.TransactionType.DataPropertyName = "TransactionType";
-            this.TransactionType.HeaderText = "Transaction Type";
-            this.TransactionType.Name = "TransactionType";
-            this.TransactionType.ReadOnly = true;
-            // 
-            // TransactionDate
-            // 
-            this.TransactionDate.DataPropertyName = "TransactionDate";
-            this.TransactionDate.HeaderText = "Transaction Date";
-            this.TransactionDate.Name = "TransactionDate";
-            this.TransactionDate.ReadOnly = true;
-            // 
             // btRefresh
             // 
-            this.btRefresh.Location = new System.Drawing.Point(29, 61);
+            this.btRefresh.Location = new System.Drawing.Point(29, 44);
             this.btRefresh.Name = "btRefresh";
             this.btRefresh.Size = new System.Drawing.Size(75, 23);
             this.btRefresh.TabIndex = 2;
@@ -207,7 +130,7 @@ namespace LybSys
             this.button1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.button1.Location = new System.Drawing.Point(700, 12);
+            this.button1.Location = new System.Drawing.Point(725, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -215,27 +138,125 @@ namespace LybSys
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.transactionIDDataGridViewTextBoxColumn,
+            this.userDataGridViewTextBoxColumn,
+            this.transactionTypeDataGridViewTextBoxColumn,
+            this.bookTitleDataGridViewTextBoxColumn,
+            this.transactionDateDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tRANSACTIONSBindingSource1;
+            this.dataGridView1.Location = new System.Drawing.Point(29, 86);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(746, 335);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // dtp
+            // 
+            this.dtp.Location = new System.Drawing.Point(491, 43);
+            this.dtp.Name = "dtp";
+            this.dtp.Size = new System.Drawing.Size(200, 20);
+            this.dtp.TabIndex = 5;
+            this.dtp.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // transactionDateDataGridViewTextBoxColumn
+            // 
+            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "Transaction Date";
+            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookTitleDataGridViewTextBoxColumn
+            // 
+            this.bookTitleDataGridViewTextBoxColumn.DataPropertyName = "bookTitle";
+            this.bookTitleDataGridViewTextBoxColumn.HeaderText = "book Title";
+            this.bookTitleDataGridViewTextBoxColumn.Name = "bookTitleDataGridViewTextBoxColumn";
+            this.bookTitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionTypeDataGridViewTextBoxColumn
+            // 
+            this.transactionTypeDataGridViewTextBoxColumn.DataPropertyName = "TransactionType";
+            this.transactionTypeDataGridViewTextBoxColumn.HeaderText = "Transaction Type";
+            this.transactionTypeDataGridViewTextBoxColumn.Name = "transactionTypeDataGridViewTextBoxColumn";
+            this.transactionTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userDataGridViewTextBoxColumn
+            // 
+            this.userDataGridViewTextBoxColumn.DataPropertyName = "user";
+            this.userDataGridViewTextBoxColumn.HeaderText = "Account Used";
+            this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
+            this.userDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionIDDataGridViewTextBoxColumn
+            // 
+            this.transactionIDDataGridViewTextBoxColumn.DataPropertyName = "TransactionID";
+            this.transactionIDDataGridViewTextBoxColumn.HeaderText = "Transaction Number";
+            this.transactionIDDataGridViewTextBoxColumn.Name = "transactionIDDataGridViewTextBoxColumn";
+            this.transactionIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // btSort
+            // 
+            this.btSort.Location = new System.Drawing.Point(698, 43);
+            this.btSort.Name = "btSort";
+            this.btSort.Size = new System.Drawing.Size(75, 23);
+            this.btSort.TabIndex = 6;
+            this.btSort.Text = "Sort";
+            this.btSort.UseVisualStyleBackColor = true;
+            this.btSort.Click += new System.EventHandler(this.btSort_Click);
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbMessage.Location = new System.Drawing.Point(110, 48);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(0, 13);
+            this.lbMessage.TabIndex = 7;
+            // 
+            // dDTransactions
+            // 
+            this.dDTransactions.DataSetName = "DDTransactions";
+            this.dDTransactions.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tRANSACTIONSBindingSource1
+            // 
+            this.tRANSACTIONSBindingSource1.DataMember = "TRANSACTIONS";
+            this.tRANSACTIONSBindingSource1.DataSource = this.dDTransactions;
+            // 
+            // tRANSACTIONSTableAdapter1
+            // 
+            this.tRANSACTIONSTableAdapter1.ClearBeforeFill = true;
+            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbMessage);
+            this.Controls.Add(this.btSort);
+            this.Controls.Add(this.dtp);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btRefresh);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Reports";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reports";
             this.Load += new System.EventHandler(this.Reports_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.transactionDatabase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnDatabase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,18 +271,19 @@ namespace LybSys
         private System.Windows.Forms.ToolStripMenuItem transactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem borrowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem returnToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private TransactionDatabase transactionDatabase;
-        private System.Windows.Forms.BindingSource tRANSACTIONSBindingSource;
-        private TransactionDatabaseTableAdapters.TRANSACTIONSTableAdapter tRANSACTIONSTableAdapter;
-        private ReturnDatabase returnDatabase;
-        private System.Windows.Forms.BindingSource bORROWBindingSource;
-        private ReturnDatabaseTableAdapters.BORROWTableAdapter bORROWTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TransactionDate;
         private System.Windows.Forms.Button btRefresh;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DateTimePicker dtp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bookTitleDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transactionDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btSort;
+        private System.Windows.Forms.Label lbMessage;
+        private DDTransactions dDTransactions;
+        private System.Windows.Forms.BindingSource tRANSACTIONSBindingSource1;
+        private DDTransactionsTableAdapters.TRANSACTIONSTableAdapter tRANSACTIONSTableAdapter1;
     }
 }

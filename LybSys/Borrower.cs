@@ -67,29 +67,35 @@ namespace LybSys
         {
             SignUp su = new SignUp();
             su.Show();
-            string username = SignIn.AccountName;
-            string type = "Add User";
+            //string username = SignIn.AccountName;
+           // string type = "Add User";
             //string date = DateTime.Now.ToString();
-            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+            /*
+            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @bookTitle, @TransactionDate)", cn);
             cmd.Parameters.AddWithValue("username", username);
+            cmd.Parameters.AddWithValue("bookTitle", "");
             cmd.Parameters.AddWithValue("TransactionType", type);
             cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
             cmd.ExecuteNonQuery();
+            */
         }
-
+        public static string Username;
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateAccount update = new UpdateAccount();
             update.Show();
             this.Hide();
-            string username = SignIn.AccountName;
+            string Username = tbUsername.Text;
             string type = "Update User";
             string date = DateTime.Now.ToString();
-            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+            /*
+            cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType,@bookTitle, @TransactionDate)", cn);
             cmd.Parameters.AddWithValue("username", username);
             cmd.Parameters.AddWithValue("TransactionType", type);
+            cmd.Parameters.AddWithValue("bookTitle", "");
             cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
             cmd.ExecuteNonQuery();
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,14 +103,18 @@ namespace LybSys
             if (tbUsername.Text != string.Empty)
             {
                 //cn.Open();
-                cmd = new SqlCommand("delete from ACCOUNTS where bookID ='" + tbUsername.Text + "'", cn);
+                cmd = new SqlCommand("delete from ACCOUNTS where username ='" + tbUsername.Text + "'", cn);
+                
                 string username = SignIn.AccountName;
-                string type = "Add User";
-                string date = DateTime.Now.ToString();
-                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @TransactionDate)", cn);
+               // string type = "Add User";
+               // string date = DateTime.Now.ToString();
+                /*
+                cmd = new SqlCommand("insert into TRANSACTIONS values(@username, @TransactionType, @bookTitle, @TransactionDate)", cn);
                 cmd.Parameters.AddWithValue("username", username);
                 cmd.Parameters.AddWithValue("TransactionType", type);
-                cmd.Parameters.AddWithValue("TransactionData", DateTime.Now);
+                cmd.Parameters.AddWithValue("bookTitle", "");
+                cmd.Parameters.AddWithValue("TransactionDate", DateTime.Now);
+                */
                 cmd.ExecuteNonQuery();
                 //cn.Close();
                 MessageBox.Show("The Account has been removed from the Library", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,6 +141,27 @@ namespace LybSys
             sqlData.Fill(dtbl);
 
             dataGridView1.DataSource = dtbl;
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewCell cell = null;
+            foreach (DataGridViewCell selectedCell in dataGridView1.SelectedCells)
+            {
+                cell = selectedCell;
+                break;
+            }
+
+            DataGridViewRow row = cell.OwningRow;
+            tbUsername.Text = row.Cells[0].Value.ToString();
+            
+        }
+
+        private void summaryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reports rp = new Reports();
+            rp.Show();
+            this.Hide();
         }
     }
 }
