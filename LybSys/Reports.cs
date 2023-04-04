@@ -107,18 +107,25 @@ namespace LybSys
 
         private void btSort_Click(object sender, EventArgs e)
         {
+            string date = dtp.Value.ToString("yyyy-MM-dd"); // format the date value as yyyy-MM-dd
+            SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * FROM [dbo].[TRANSACTIONS] WHERE TransactionDate = @date", cn);
+            sqlData.SelectCommand.Parameters.AddWithValue("@date", date); // use a parameterized query to avoid SQL injection
+            DataTable dtbl = new DataTable();
+            sqlData.Fill(dtbl);
 
+            dataGridView1.DataSource = dtbl;
+            /*
             string date = dtp.Value.ToString();
                 SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS] where TransactionDate = '"+ dtp.Value +"'", cn);
                 DataTable dtbl = new DataTable();
                 sqlData.Fill(dtbl);
 
                 dataGridView1.DataSource = dtbl;
-           // }
-           // catch (InvalidOperationException ex)
-            //{
+
+            catch (InvalidOperationException ex)
+
                 lbMessage.Text = "";
-            //}
+            */
         }
     }
 }
