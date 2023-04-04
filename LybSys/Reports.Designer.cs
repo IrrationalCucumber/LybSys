@@ -40,21 +40,21 @@ namespace LybSys
             this.btRefresh = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dtp = new System.Windows.Forms.DateTimePicker();
-            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transactionTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.transactionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookTitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transactionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tRANSACTIONSBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dDTransactions = new LybSys.DDTransactions();
+            this.dtp = new System.Windows.Forms.DateTimePicker();
             this.btSort = new System.Windows.Forms.Button();
             this.lbMessage = new System.Windows.Forms.Label();
-            this.dDTransactions = new LybSys.DDTransactions();
-            this.tRANSACTIONSBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSACTIONSTableAdapter1 = new LybSys.DDTransactionsTableAdapters.TRANSACTIONSTableAdapter();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -158,34 +158,12 @@ namespace LybSys
             this.dataGridView1.Size = new System.Drawing.Size(746, 335);
             this.dataGridView1.TabIndex = 4;
             // 
-            // dtp
+            // transactionIDDataGridViewTextBoxColumn
             // 
-            this.dtp.Location = new System.Drawing.Point(491, 43);
-            this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(200, 20);
-            this.dtp.TabIndex = 5;
-            this.dtp.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // transactionDateDataGridViewTextBoxColumn
-            // 
-            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
-            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "Transaction Date";
-            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
-            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bookTitleDataGridViewTextBoxColumn
-            // 
-            this.bookTitleDataGridViewTextBoxColumn.DataPropertyName = "bookTitle";
-            this.bookTitleDataGridViewTextBoxColumn.HeaderText = "book Title";
-            this.bookTitleDataGridViewTextBoxColumn.Name = "bookTitleDataGridViewTextBoxColumn";
-            this.bookTitleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // transactionTypeDataGridViewTextBoxColumn
-            // 
-            this.transactionTypeDataGridViewTextBoxColumn.DataPropertyName = "TransactionType";
-            this.transactionTypeDataGridViewTextBoxColumn.HeaderText = "Transaction Type";
-            this.transactionTypeDataGridViewTextBoxColumn.Name = "transactionTypeDataGridViewTextBoxColumn";
-            this.transactionTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionIDDataGridViewTextBoxColumn.DataPropertyName = "TransactionID";
+            this.transactionIDDataGridViewTextBoxColumn.HeaderText = "Transaction Number";
+            this.transactionIDDataGridViewTextBoxColumn.Name = "transactionIDDataGridViewTextBoxColumn";
+            this.transactionIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // userDataGridViewTextBoxColumn
             // 
@@ -194,12 +172,45 @@ namespace LybSys
             this.userDataGridViewTextBoxColumn.Name = "userDataGridViewTextBoxColumn";
             this.userDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // transactionIDDataGridViewTextBoxColumn
+            // transactionTypeDataGridViewTextBoxColumn
             // 
-            this.transactionIDDataGridViewTextBoxColumn.DataPropertyName = "TransactionID";
-            this.transactionIDDataGridViewTextBoxColumn.HeaderText = "Transaction Number";
-            this.transactionIDDataGridViewTextBoxColumn.Name = "transactionIDDataGridViewTextBoxColumn";
-            this.transactionIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.transactionTypeDataGridViewTextBoxColumn.DataPropertyName = "TransactionType";
+            this.transactionTypeDataGridViewTextBoxColumn.HeaderText = "Transaction Type";
+            this.transactionTypeDataGridViewTextBoxColumn.Name = "transactionTypeDataGridViewTextBoxColumn";
+            this.transactionTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bookTitleDataGridViewTextBoxColumn
+            // 
+            this.bookTitleDataGridViewTextBoxColumn.DataPropertyName = "bookTitle";
+            this.bookTitleDataGridViewTextBoxColumn.HeaderText = "book Title";
+            this.bookTitleDataGridViewTextBoxColumn.Name = "bookTitleDataGridViewTextBoxColumn";
+            this.bookTitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // transactionDateDataGridViewTextBoxColumn
+            // 
+            this.transactionDateDataGridViewTextBoxColumn.DataPropertyName = "TransactionDate";
+            this.transactionDateDataGridViewTextBoxColumn.HeaderText = "Transaction Date";
+            this.transactionDateDataGridViewTextBoxColumn.Name = "transactionDateDataGridViewTextBoxColumn";
+            this.transactionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tRANSACTIONSBindingSource1
+            // 
+            this.tRANSACTIONSBindingSource1.DataMember = "TRANSACTIONS";
+            this.tRANSACTIONSBindingSource1.DataSource = this.dDTransactions;
+            // 
+            // dDTransactions
+            // 
+            this.dDTransactions.DataSetName = "DDTransactions";
+            this.dDTransactions.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dtp
+            // 
+            this.dtp.Checked = false;
+            this.dtp.Location = new System.Drawing.Point(491, 43);
+            this.dtp.Name = "dtp";
+            this.dtp.Size = new System.Drawing.Size(200, 20);
+            this.dtp.TabIndex = 5;
+            this.dtp.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // btSort
             // 
@@ -219,16 +230,6 @@ namespace LybSys
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(0, 13);
             this.lbMessage.TabIndex = 7;
-            // 
-            // dDTransactions
-            // 
-            this.dDTransactions.DataSetName = "DDTransactions";
-            this.dDTransactions.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tRANSACTIONSBindingSource1
-            // 
-            this.tRANSACTIONSBindingSource1.DataMember = "TRANSACTIONS";
-            this.tRANSACTIONSBindingSource1.DataSource = this.dDTransactions;
             // 
             // tRANSACTIONSTableAdapter1
             // 
@@ -255,8 +256,8 @@ namespace LybSys
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSACTIONSBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dDTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

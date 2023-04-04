@@ -109,7 +109,7 @@ namespace LybSys
         {
 
             string date = dtp.Value.ToString();
-                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS] where TransactionDate = "+ date +"", cn);
+                SqlDataAdapter sqlData = new SqlDataAdapter("SELECT * from [dbo].[TRANSACTIONS] where TransactionDate = '"+ dtp.Value +"'", cn);
                 DataTable dtbl = new DataTable();
                 sqlData.Fill(dtbl);
 
